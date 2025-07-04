@@ -11,7 +11,7 @@ const PrivateRoute = () => {
   if (user.role === "Admin") return <AdminHomePage />;
   if (user.role === "Teacher") return <TeacherHomePage />;
   if (user.role === "Parent") return <ParentHomePage />;
-  if (user.role === "Accoutant") return <AccountantHomePage />;
+  if (user.role === "Accountant") return <AccountantHomePage />;
   
   return <div> you can not access any resources.</div>
 };

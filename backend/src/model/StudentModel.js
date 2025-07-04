@@ -1,6 +1,4 @@
-// models/Student.js
 const mongoose = require('mongoose');
-
 const Schema = mongoose.Schema;
 
 const StudentSchema = new Schema({
@@ -36,6 +34,16 @@ const StudentSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Parent',
     required: true
+  },
+  class_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Class',
+    required: true
+  }
+}, {
+  timestamps: {
+    createdAt: 'create_at',
+    updatedAt: 'update_at'
   }
 });
 
