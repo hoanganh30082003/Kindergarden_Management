@@ -19,7 +19,7 @@ const Header = () => {
   return (
     <Navbar bg="light" expand="lg" className="mb-4">
       <Container>
-        <Navbar.Brand href="/">My App</Navbar.Brand>
+        <Navbar.Brand href="/">Admin - Kindergarten management</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
