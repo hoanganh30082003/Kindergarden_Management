@@ -36,7 +36,7 @@ const UserSchema = new Schema({
   },
   status: {
     type: String,
-    enum: ['Active', 'Inactive', 'Suspended'], // hoặc trạng thái bạn định nghĩa
+    enum: ['Active', 'Inactive', 'Suspended'], 
     default: 'Active'
   },
   last_login: {
@@ -46,7 +46,7 @@ const UserSchema = new Schema({
 
 },
   {
-    timestamps: true // tự động tạo createdAt và updatedAt
+    timestamps: true 
   });
 
 module.exports = mongoose.model('Users', UserSchema);

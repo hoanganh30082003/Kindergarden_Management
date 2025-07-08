@@ -21,11 +21,11 @@ const teacherSchema = new mongoose.Schema({
     required: true,
   },
   note: {
-    type: String, // TEXT tương đương với String (không giới hạn độ dài)
+    type: String, 
     default: '',
   },
 }, {
-  timestamps: true // tự động tạo createdAt và updatedAt
+  timestamps: true 
 });
 
 module.exports = mongoose.model('Teacher', teacherSchema);
