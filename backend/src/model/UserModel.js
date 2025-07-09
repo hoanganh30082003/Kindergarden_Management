@@ -8,15 +8,17 @@ const UserSchema = new Schema({
     type: String,
     required: true,
     unique: true,
+    maxlength: 10,
     trim: true
   },
   password: {
     type: String,
     required: true,
+    maxlength: 10
   },
   role: {
     type: String,
-    enum: ['Admin', 'Teacher', 'Parent', 'Accountant'], 
+    enum: ['Admin', 'Teacher', 'Parent', 'Accountant'], // hoặc các vai trò khác mà bạn định nghĩa
     required: true
   },
   system_name: {
@@ -36,7 +38,7 @@ const UserSchema = new Schema({
   },
   status: {
     type: String,
-    enum: ['Active', 'Inactive', 'Suspended'], 
+    enum: ['Active', 'Inactive', 'Suspended'], // hoặc trạng thái bạn định nghĩa
     default: 'Active'
   },
   last_login: {
@@ -46,7 +48,7 @@ const UserSchema = new Schema({
 
 },
   {
-    timestamps: true 
+    timestamps: true // tự động tạo createdAt và updatedAt
   });
 
-module.exports = mongoose.model('Users', UserSchema);
+module.exports = mongoose.model('User', UserSchema);

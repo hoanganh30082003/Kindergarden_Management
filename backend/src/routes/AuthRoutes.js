@@ -1,11 +1,14 @@
-// src/routes/AuthRoutes.js
 const express = require('express');
 const router = express.Router();
-const UserController = require('../controllers/UserController');
+const authController = require('../controller/AuthController');
+const authenticateToken = require('../middlewares/AuthMiddleware');
 
+// Route login
+router.post('/login', authController.login);
 
-router.post('/register', UserController.register);
+// Route bảo vệ bằng JWT
+router.get('/profile', authenticateToken, (req, res) => {
+  res.json({ message: `Hello ${req.user.username}!`, user: req.user });
+});
 
-router.post('/login', UserController.login);
-
-module.exports = router;
+module.exports =  router;
