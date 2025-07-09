@@ -1,18 +1,11 @@
-const UserModel = require('../model/UserModel');
+// src/repositories/UserRepository.js
+const User = require('../models/UserModel');
 
-const findByUsernameAndPassword = async (username, password) => {
-
-    return await UserModel.findOne({ username, password });
+class UserRepository {
+    async findUserByUsername(username) {
+        return await User.findOne({ username });
+    }
+    
 }
 
-const updateLastLogin = async (userId) => {
-    return await UserModel.findByIdAndUpdate(
-        userId,
-        { last_login: new Date() },
-        { new: true }
-    );
-}
-module.exports = {
-    findByUsernameAndPassword,
-    updateLastLogin
-};
+module.exports = new UserRepository();
