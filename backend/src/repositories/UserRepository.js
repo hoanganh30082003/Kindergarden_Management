@@ -15,4 +15,4 @@ const updateLastLogin = async (userId) => {
 module.exports = {
     findByUsernameAndPassword,
     updateLastLogin
-};
+};  

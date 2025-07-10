@@ -8,17 +8,16 @@ const UserSchema = new Schema({
     type: String,
     required: true,
     unique: true,
-    maxlength: 10,
+    
     trim: true
   },
   password: {
     type: String,
     required: true,
-    maxlength: 10
   },
   role: {
     type: String,
-    enum: ['Admin', 'Teacher', 'Parent', 'Accountant'], // hoặc các vai trò khác mà bạn định nghĩa
+    enum: ['Admin', 'Teacher', 'Parent', 'Accountant'], 
     required: true
   },
   system_name: {
