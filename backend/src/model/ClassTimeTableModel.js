@@ -8,21 +8,21 @@ const classTimetableSchema = new mongoose.Schema({
   },
   weekday: {
     type: String,
-    enum: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+    enum: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
     required: true
   },
   start_time: {
-    type: String, // stored as "HH:mm"
+    type: Time, // stored as "HH:mm"
     required: true
   },
   end_time: {
-    type: String, // stored as "HH:mm"
+    type: Time, // stored as "HH:mm"
     required: true
   },
   activity: {
     type: String,
     required: true,
-    maxlength: 50
+    maxlength: 100
   },
   is_special: {
     type: Boolean,
@@ -33,10 +33,7 @@ const classTimetableSchema = new mongoose.Schema({
     default: ''
   }
 }, {
-  timestamps: {
-    createdAt: 'create_at',
-    updatedAt: 'update_at'
-  }
+  timestamps: true
 });
 
 module.exports = mongoose.model('ClassTimetable', classTimetableSchema);

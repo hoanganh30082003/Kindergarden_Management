@@ -4,7 +4,6 @@ const classSchema = new mongoose.Schema({
   class_name: {
     type: String,
     required: true,
-    maxlength: 10,
     unique: true // tránh trùng tên lớp
   },
   capacity: {
@@ -18,10 +17,7 @@ const classSchema = new mongoose.Schema({
     required: true
   }
 }, {
-  timestamps: {
-    createdAt: 'create_at',
-    updatedAt: 'update_at'
-  }
+  timestamps: true
 });
 
 module.exports = mongoose.model('Class', classSchema);

@@ -1,13 +1,13 @@
 const express=require('express');
 const connectDB=require('./config/db');
 const cors = require('cors');
-const authRoutes = require('./routes/AuthRoutes');
+const accountRoutes = require('./routes/AccountRoutes');
 const app=express();
 connectDB();
 app.use(cors());
 app.use(express.json()); 
 
-app.use('/api/auth', authRoutes);
+app.use('/api/auth', accountRoutes);
 
 
 const PORT=process.env.PORT||9999

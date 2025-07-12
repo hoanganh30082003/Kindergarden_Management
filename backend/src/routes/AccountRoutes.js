@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const authController = require('../controller/AuthController');
+const accountController = require('../controller/AccountController');
 const authenticateToken = require('../middlewares/AuthMiddleware');
 
 // Route login
-router.post('/login', authController.login);
+router.post('/login', accountController.login);
 
 // Route bảo vệ bằng JWT
 router.get('/profile', authenticateToken, (req, res) => {

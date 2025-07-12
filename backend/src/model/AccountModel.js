@@ -3,18 +3,11 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const UserSchema = new Schema({
-  username: {
-    type: String,
-    required: true,
-    unique: true,
-    maxlength: 10,
-    trim: true
-  },
+const AccountSchema = new Schema({
   password: {
     type: String,
     required: true,
-    maxlength: 10
+    maxlength: 50
   },
   role: {
     type: String,
@@ -51,4 +44,4 @@ const UserSchema = new Schema({
     timestamps: true // tự động tạo createdAt và updatedAt
   });
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('Account', AccountSchema);
