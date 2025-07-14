@@ -33,10 +33,10 @@ const Login = () => {
               {error && <Alert variant="danger">{error}</Alert>}
               <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="email">
-                  <Form.Label>Username</Form.Label>
+                  <Form.Label>Email</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Enter username"
+                    placeholder="Enter email"
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                     required

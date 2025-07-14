@@ -1,8 +1,11 @@
 const AccountModel = require('../model/AccountModel');
 
-const findByUsernameAndPassword = async (email, password) => {
-
+const findByEmailAndPassword = async (email, password) => {
+try{
     return await AccountModel.findOne({ email, password });
+}catch (error){
+    console.log(error);
+}
 }
 
 const updateLastLogin = async (userId) => {
@@ -13,6 +16,6 @@ const updateLastLogin = async (userId) => {
     );
 }
 module.exports = {
-    findByUsernameAndPassword,
+    findByEmailAndPassword,
     updateLastLogin
 };

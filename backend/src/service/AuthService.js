@@ -1,13 +1,13 @@
 const jwt = require('jsonwebtoken');
-const UserRepository = require('../repositories/UserRepository');
+const AccountRepository = require('../repositories/AccountRepository');
 
-const login = async (username, password) => {
-  const user = await UserRepository.findByUsernameAndPassword(username,password);
+const login = async (email, password) => {
+  const user = await AccountRepository.findByEmailAndPassword(email,password);
 
   if (!user) {
     throw new Error('Invalid credentials');
   }
-  await UserRepository.updateLastLogin(user._id);
+  await AccountRepository.updateLastLogin(user._id);
   const token = generateToken(user);
   return { token, user };
 };
