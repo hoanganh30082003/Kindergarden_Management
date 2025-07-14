@@ -11,7 +11,7 @@ const AccountSchema = new Schema({
   },
   role: {
     type: String,
-    enum: ['Admin', 'Teacher', 'Parent', 'Accountant'], // hoặc các vai trò khác mà bạn định nghĩa
+    enum: ['Admin', 'Teacher', 'Parent', 'Accountant'], 
     required: true
   },
   system_name: {

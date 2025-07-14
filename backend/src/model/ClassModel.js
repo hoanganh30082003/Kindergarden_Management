@@ -4,7 +4,8 @@ const classSchema = new mongoose.Schema({
   class_name: {
     type: String,
     required: true,
-    unique: true // tránh trùng tên lớp
+    maxlength: 10,
+    unique: true 
   },
   capacity: {
     type: Number,
