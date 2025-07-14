@@ -54,8 +54,8 @@ const AdminHomePage = () => {
           <Col md={4}>
   <Card className="text-center shadow-sm">
     <Card.Body>
-      <Card.Title>Manage Fees</Card.Title>
-      <Card.Text>Create and update tuition and meal fees.</Card.Text>
+      <Card.Title>Manage tuition Fees</Card.Title>
+      <Card.Text>Create and update tuition bfees.</Card.Text>
       <Button variant="info" onClick={() => navigate("/admin/fees")}>
         Go to Fee Management
       </Button>

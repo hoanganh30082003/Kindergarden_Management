@@ -49,7 +49,7 @@ const ManageFees = () => {
 
   return (
     <div className="container mt-4">
-      <h3>Manage Tuition / Meal Fees</h3>
+      <h3>Manage Tuition Fees</h3>
       <Button className="mb-3" variant="secondary" onClick={() => navigate("/")}>← Back to Home</Button>
       <Button className="mb-3 float-end" onClick={() => setShow(true)}>+ Add Fee</Button>
 
