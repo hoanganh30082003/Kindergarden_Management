@@ -50,6 +50,19 @@ const AdminHomePage = () => {
               </Card.Body>
             </Card>
           </Col>
+
+          <Col md={4}>
+  <Card className="text-center shadow-sm">
+    <Card.Body>
+      <Card.Title>Manage Fees</Card.Title>
+      <Card.Text>Create and update tuition and meal fees.</Card.Text>
+      <Button variant="info" onClick={() => navigate("/admin/fees")}>
+        Go to Fee Management
+      </Button>
+    </Card.Body>
+  </Card>
+</Col>
+
         </Row>
       </Container>
     </div>

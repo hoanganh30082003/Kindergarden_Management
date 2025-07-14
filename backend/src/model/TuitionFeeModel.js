@@ -17,6 +17,11 @@ const tuitionFeeSchema = new mongoose.Schema({
   note: {
     type: String,
     default: ''
+  },
+  payment_status: {
+    type: String,
+    enum: ['Unpaid', 'Paid', 'Pending'],
+    default: 'Unpaid'
   }
 }, {
   timestamps: {
