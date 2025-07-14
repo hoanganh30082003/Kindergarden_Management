@@ -20,7 +20,7 @@ const ParentSchema = new Schema({
   },
   address: {
     type: String,
-    maxlength: 100,
+    maxlength: 50,
     required: false
   },
   phone: {
@@ -36,17 +36,17 @@ const ParentSchema = new Schema({
   },
   occupation: {
     type: String,
-    maxlength: 100,
+    maxlength: 50,
     required: false
   },
   relationship: {
     type: String,
-    maxlength: 100,
+    maxlength: 50,
     required: false
   },
-  account_id: {
+  user_id: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Account',
+    ref: 'User',
     required: true
   }
 });

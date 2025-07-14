@@ -6,8 +6,13 @@ const attendanceSchema = new mongoose.Schema({
     ref: 'Student',
     required: true
   },
+  class_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Class',
+    required: true
+  },
   date: {
-    type: DateTime,
+    type: Date,
     required: true
   },
   status: {
@@ -16,7 +21,10 @@ const attendanceSchema = new mongoose.Schema({
     required: true
   }
 }, {
-  timestamps: true
+  timestamps: {
+    createdAt: 'create_at',
+    updatedAt: 'update_at'
+  }
 });
 
 module.exports = mongoose.model('Attendance', attendanceSchema);

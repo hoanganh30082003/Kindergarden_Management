@@ -13,12 +13,12 @@ const StudentSchema = new Schema({
   },
   gender: {
     type: String,
-    enum: ['Male', 'Female'],
+    enum: ['Male', 'Female', 'Other'],
     required: false
   },
   address: {
     type: String,
-    maxlength: 100,
+    maxlength: 50,
     required: false
   },
   health_info: {
@@ -27,6 +27,7 @@ const StudentSchema = new Schema({
   },
   student_photo: {
     type: String, // Có thể là URL hoặc tên file ảnh được lưu
+    maxlength: 255,
     required: false
   },
   parent_id: {
@@ -40,7 +41,10 @@ const StudentSchema = new Schema({
     required: true
   }
 }, {
-  timestamps: true
+  timestamps: {
+    createdAt: 'create_at',
+    updatedAt: 'update_at'
+  }
 });
 
 module.exports = mongoose.model('Student', StudentSchema);

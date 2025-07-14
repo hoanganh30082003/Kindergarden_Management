@@ -17,14 +17,12 @@ const tuitionFeeSchema = new mongoose.Schema({
   note: {
     type: String,
     default: ''
-  },
-  last_editor: {
-    type: mongoose.type.Schema.ObjectId,
-    ref: 'Account',
-    require: true
   }
 }, {
-  timestamps: true
+  timestamps: {
+    createdAt: 'create_at',
+    updatedAt: 'update_at'
+  }
 });
 
 module.exports = mongoose.model('TuitionFee', tuitionFeeSchema);
