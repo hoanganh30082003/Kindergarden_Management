@@ -18,6 +18,7 @@ const ManageTeachers = () => {
     hired_date: "",
     note: ""
   });
+  const [searchTerm, setSearchTerm] = useState("");
 
   const navigate = useNavigate();
 
@@ -81,6 +82,11 @@ const ManageTeachers = () => {
     }
   };
 
+  const filteredTeachers = teachers.filter(t =>
+    (t.user_id?.username && t.user_id.username.toLowerCase().includes(searchTerm.toLowerCase())) ||
+    (t.qualification && t.qualification.toLowerCase().includes(searchTerm.toLowerCase()))
+  );
+
   return (
     <div className="container mt-4">
       <h3>Manage Teachers</h3>
@@ -103,6 +109,14 @@ const ManageTeachers = () => {
         </Button>
         <Button variant="secondary" onClick={() => navigate("/")}>← Back to Home</Button>
       </div>
+      <Form.Control
+        type="text"
+        placeholder="Search by username or qualification..."
+        style={{ maxWidth: 300 }}
+        value={searchTerm}
+        onChange={e => setSearchTerm(e.target.value)}
+        className="mb-3"
+      />
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -117,7 +131,7 @@ const ManageTeachers = () => {
           </tr>
         </thead>
         <tbody>
-          {teachers.map((t) => (
+          {filteredTeachers.map((t) => (
             <tr key={t._id}>
               <td>{t.user_id?.username}</td>
               <td>{t.user_id?.email}</td>

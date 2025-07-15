@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Table, Button, Modal, Form } from "react-bootstrap";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Plus, ArrowLeft, Trash } from 'react-bootstrap-icons';
 
 const ManageFees = () => {
   const [fees, setFees] = useState([]);
@@ -15,6 +16,7 @@ const ManageFees = () => {
   });
   const [classes, setClasses] = useState([]);
   const navigate = useNavigate();
+  const [searchTerm, setSearchTerm] = useState("");
 
   const fetchFees = async () => {
     const res = await axios.get("http://localhost:9999/api/admin/fees");
@@ -50,6 +52,17 @@ const ManageFees = () => {
     fetchFees();
   };
 
+  const handleToggleStatus = async (id, currentStatus) => {
+    try {
+      await axios.put(`http://localhost:9999/api/admin/fees/${id}`, {
+        payment_status: currentStatus === 'Paid' ? 'Unpaid' : 'Paid'
+      });
+      fetchFees();
+    } catch (err) {
+      alert('Failed to update status');
+    }
+  };
+
   const deleteFee = async (id) => {
     if (!window.confirm("Are you sure you want to delete this tuition fee?")) return;
     await axios.delete(`http://localhost:9999/api/admin/fees/${id}`);
@@ -62,14 +75,28 @@ const ManageFees = () => {
       currency: 'VND'
     }).format(parseFloat(value?.$numberDecimal || value || 0));
 
+  const filteredFees = fees.filter(fee =>
+    (fee.class_id?.class_name && fee.class_id.class_name.toLowerCase().includes(searchTerm.toLowerCase())) ||
+    (fee.note && fee.note.toLowerCase().includes(searchTerm.toLowerCase()))
+  );
+
   return (
     <div className="container mt-4">
-      <h3>Manage Tuition Fees</h3>
-      <Button className="mb-3" variant="secondary" onClick={() => navigate("/")}>← Back to Home</Button>
-      <Button className="mb-3 float-end" onClick={() => setShow(true)}>+ Add Fee</Button>
-
-      <Table striped bordered hover>
-        <thead>
+      <h3 className="fw-bold text-center mb-4" style={{ letterSpacing: 1 }}>Manage Tuition Fees</h3>
+      <div className="mb-3 d-flex justify-content-between">
+        <Button variant="secondary" className="d-flex align-items-center" onClick={() => navigate("/")}><ArrowLeft className="me-2"/>Back to Home</Button>
+        <Button variant="primary" className="d-flex align-items-center" onClick={() => setShow(true)}><Plus className="me-2"/>Add Fee</Button>
+      </div>
+      <Form.Control
+        type="text"
+        placeholder="Search by class name or note..."
+        style={{ maxWidth: 300 }}
+        value={searchTerm}
+        onChange={e => setSearchTerm(e.target.value)}
+        className="mb-3"
+      />
+      <Table striped bordered hover responsive className="shadow-sm rounded" style={{ background: '#fff' }}>
+        <thead className="table-light">
           <tr>
             <th>Class</th>
             <th>Monthly Fee</th>
@@ -80,29 +107,27 @@ const ManageFees = () => {
           </tr>
         </thead>
         <tbody>
-          {fees.map(fee => (
+          {filteredFees.map(fee => (
             <tr key={fee._id}>
-              <td>{fee.class_id?.class_name || "N/A"}</td>
-              <td>{formatVND(fee.monthly_fee)}</td>
-              <td>{new Date(fee.effective_date).toLocaleDateString()}</td>
+              <td>{fee.class_id?.class_name || fee.class_id}</td>
+              <td>{typeof fee.monthly_fee === 'object' ? fee.monthly_fee.$numberDecimal : fee.monthly_fee}</td>
+              <td>{fee.effective_date ? new Date(fee.effective_date).toLocaleDateString() : ''}</td>
               <td>{fee.note}</td>
-              <td>{fee.payment_status}</td>
               <td>
+                <span className={fee.payment_status === 'Paid' ? 'text-success fw-bold' : 'text-danger fw-bold'}>
+                  {fee.payment_status}
+                </span>
                 <Button
                   size="sm"
                   variant={fee.payment_status === 'Paid' ? 'warning' : 'success'}
-                  className="me-2"
-                  onClick={() => updateStatus(fee._id, fee.payment_status)}
+                  className="ms-2"
+                  onClick={() => handleToggleStatus(fee._id, fee.payment_status)}
                 >
                   Mark as {fee.payment_status === 'Paid' ? 'Unpaid' : 'Paid'}
                 </Button>
-                <Button
-                  size="sm"
-                  variant="danger"
-                  onClick={() => deleteFee(fee._id)}
-                >
-                  Delete
-                </Button>
+              </td>
+              <td>
+                <Button variant="outline-danger" size="sm" onClick={() => deleteFee(fee._id)}><Trash/></Button>
               </td>
             </tr>
           ))}

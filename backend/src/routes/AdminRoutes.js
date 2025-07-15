@@ -97,7 +97,7 @@ router.delete("/parents/:id", async (req, res) => {
 // GET ALL TEACHERS
 router.get("/teachers", async (req, res) => {
   try {
-    const teachers = await Teacher.find().populate("user_id", "-password");
+    const teachers = await Teacher.find().populate("user_id", "username");
     res.json(teachers);
   } catch (err) {
     res.status(500).json({ error: "Failed to fetch teachers" });
@@ -274,20 +274,22 @@ router.get('/', async (req, res) => {
 });
 
 // Create class
-// Create class
 router.post("/classes", async (req, res) => {
   try {
     const { class_name, capacity, teacher_id } = req.body;
     if (!class_name || !capacity || !teacher_id) {
       return res.status(400).json({ error: "Missing required fields" });
     }
-
+    // Kiểm tra teacher_id hợp lệ
+    const teacher = await Teacher.findById(teacher_id).populate("user_id", "username");
+    if (!teacher || !teacher.user_id) {
+      return res.status(400).json({ error: "Invalid teacher_id: teacher not found or missing user" });
+    }
     const newClass = new Class({
       class_name,
       capacity,
-      teacher_id: mongoose.Types.ObjectId(teacher_id),
+      teacher_id, // truyền trực tiếp, để Mongoose tự convert
     });
-
     const saved = await newClass.save();
     res.status(201).json(saved);
   } catch (err) {
@@ -300,7 +302,7 @@ router.get("/classes", async (req, res) => {
   try {
     const classes = await Class.find().populate({
       path: "teacher_id",
-      populate: { path: "user_id", select: "full_name" },
+      populate: { path: "user_id", select: "username" },
     });
     res.json(classes);
   } catch (err) {
@@ -333,11 +335,28 @@ router.get("/classes", async (req, res) => {
   }
 });
 
+// Update parent account status (Active/Inactive)
+router.put("/parents/:id/status", async (req, res) => {
+  try {
+    const parent = await Parent.findById(req.params.id);
+    if (!parent) return res.status(404).json({ error: "Parent not found" });
 
+    // Update status in User model
+    const user = await User.findById(parent.user_id);
+    if (!user) return res.status(404).json({ error: "User not found" });
 
+    user.status = req.body.status;
+    await user.save();
+
+    res.json({ message: "Status updated", status: user.status });
+  } catch (err) {
+    res.status(500).json({ error: "Failed to update status" });
+  }
+});
 
 
 module.exports = router;
+
 module.exports = router;
 
 module.exports = router;

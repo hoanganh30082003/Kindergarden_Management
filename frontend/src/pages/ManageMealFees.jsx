@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Table, Button, Modal, Form } from "react-bootstrap";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Plus, ArrowLeft, Trash } from 'react-bootstrap-icons';
 
 const ManageMealFees = () => {
   const [mealFees, setMealFees] = useState([]);
@@ -15,6 +16,7 @@ const ManageMealFees = () => {
     snack_fee: "",
     note: ""
   });
+  const [searchTerm, setSearchTerm] = useState("");
 
   const navigate = useNavigate();
 
@@ -63,15 +65,14 @@ const ManageMealFees = () => {
     }
   };
 
-  const toggleStatus = async (id, currentStatus) => {
-    const newStatus = currentStatus === "Paid" ? "Unpaid" : "Paid";
+  const handleToggleStatus = async (id, currentStatus) => {
     try {
       await axios.put(`http://localhost:9999/api/admin/meal-fees/${id}/status`, {
-        payment_status: newStatus
+        payment_status: currentStatus === 'Paid' ? 'Unpaid' : 'Paid'
       });
       fetchMealFees();
     } catch (err) {
-      console.error("Failed to update status:", err);
+      alert('Failed to update status');
     }
   };
 
@@ -92,55 +93,63 @@ const ManageMealFees = () => {
     });
   };
 
+  const filteredMealFees = mealFees.filter(meal =>
+    (meal.class_id?.class_name && meal.class_id.class_name.toLowerCase().includes(searchTerm.toLowerCase())) ||
+    (meal.note && meal.note.toLowerCase().includes(searchTerm.toLowerCase()))
+  );
+
   return (
     <div className="container mt-4">
-      <h3>Manage Meal Fees</h3>
-      <Button className="mb-3" variant="secondary" onClick={() => navigate("/")}>
-        ← Back to Home
-      </Button>
-      <Button className="mb-3 float-end" onClick={() => setShow(true)}>
-        + Add Meal Fee
-      </Button>
-
-      <Table striped bordered hover>
-        <thead>
+      <h3 className="fw-bold text-center mb-4" style={{ letterSpacing: 1 }}>Manage Meal Fees</h3>
+      <div className="mb-3 d-flex justify-content-between">
+        <Button variant="secondary" className="d-flex align-items-center" onClick={() => navigate("/")}><ArrowLeft className="me-2"/>Back to Home</Button>
+        <Button variant="primary" className="d-flex align-items-center" onClick={() => setShow(true)}><Plus className="me-2"/>Add Meal Fee</Button>
+      </div>
+      <Form.Control
+        type="text"
+        placeholder="Search by class name or note..."
+        style={{ maxWidth: 300 }}
+        value={searchTerm}
+        onChange={e => setSearchTerm(e.target.value)}
+        className="mb-3"
+      />
+      <Table striped bordered hover responsive className="shadow-sm rounded" style={{ background: '#fff' }}>
+        <thead className="table-light">
           <tr>
             <th>Class</th>
             <th>Effective Date</th>
             <th>Breakfast Fee</th>
             <th>Lunch Fee</th>
             <th>Snack Fee</th>
-            <th>Status</th>
             <th>Note</th>
+            <th>Status</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          {mealFees.map(fee => (
-            <tr key={fee._id}>
-              <td>{fee.class_id?.class_name || "N/A"}</td>
-              <td>{new Date(fee.effective_date).toLocaleDateString()}</td>
-              <td>{formatCurrency(fee.breakfast_fee)}</td>
-              <td>{formatCurrency(fee.lunch_fee)}</td>
-              <td>{formatCurrency(fee.snack_fee)}</td>
-              <td>{fee.payment_status}</td>
-              <td>{fee.note}</td>
+          {filteredMealFees.map(meal => (
+            <tr key={meal._id}>
+              <td>{meal.class_id?.class_name || meal.class_id}</td>
+              <td>{meal.effective_date ? new Date(meal.effective_date).toLocaleDateString() : ''}</td>
+              <td>{typeof meal.breakfast_fee === 'object' ? meal.breakfast_fee.$numberDecimal : meal.breakfast_fee}</td>
+              <td>{typeof meal.lunch_fee === 'object' ? meal.lunch_fee.$numberDecimal : meal.lunch_fee}</td>
+              <td>{typeof meal.snack_fee === 'object' ? meal.snack_fee.$numberDecimal : meal.snack_fee}</td>
+              <td>{meal.note}</td>
               <td>
+                <span className={meal.payment_status === 'Paid' ? 'text-success fw-bold' : 'text-danger fw-bold'}>
+                  {meal.payment_status}
+                </span>
                 <Button
-                  variant={fee.payment_status === "Paid" ? "warning" : "success"}
                   size="sm"
-                  className="me-2"
-                  onClick={() => toggleStatus(fee._id, fee.payment_status)}
+                  variant={meal.payment_status === 'Paid' ? 'warning' : 'success'}
+                  className="ms-2"
+                  onClick={() => handleToggleStatus(meal._id, meal.payment_status)}
                 >
-                  Mark as {fee.payment_status === "Paid" ? "Unpaid" : "Paid"}
+                  Mark as {meal.payment_status === 'Paid' ? 'Unpaid' : 'Paid'}
                 </Button>
-                <Button
-                  variant="danger"
-                  size="sm"
-                  onClick={() => deleteMealFee(fee._id)}
-                >
-                  Delete
-                </Button>
+              </td>
+              <td>
+                <Button variant="outline-danger" size="sm" onClick={() => deleteMealFee(meal._id)}><Trash/></Button>
               </td>
             </tr>
           ))}
