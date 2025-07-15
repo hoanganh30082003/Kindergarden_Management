@@ -1,20 +1,14 @@
-// backend/src/server.js
 
 const express = require('express');
 const connectDB = require('./config/db');
 const cors = require('cors');
 
-// Import các routes
-const authRoutes = require('./routes/AuthRoutes');
+const accountRoutes = require('./routes/AccountRoutes');
 const attendanceRoutes = require('./routes/AttendanceRoutes');
 const timetableRoutes = require('./routes/ClassTimetableRoutes');
-
+const paymentRoutes = require('./routes/PaymentRoutes')
 const app = express();
 connectDB();
-
-// === THÊM DÒNG NÀY ĐỂ ĐĂNG KÝ TẤT CẢ MODEL NGAY TỪ ĐẦU ===
-require('./model');
-// ==========================================================
 
 app.use(cors());
 app.use(express.json());
