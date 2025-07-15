@@ -9,6 +9,8 @@ import ParentHomePage from "./pages/ParentHomePage";
 import AccountantHomePage from "./pages/AccountantHomePage";
 import RoleRedirect from "./components/RoleRedirect";
 import TransactionHistory from "./pages/TransactionHistory";
+import ManageStudents from "./pages/ManageStudents";
+import ManageParents from "./pages/ManageParents";
 function App() {
   return (
     <AuthProvider>
@@ -61,6 +63,20 @@ function App() {
 
           {/* Route mặc định: tự động chuyển hướng về đúng homepage theo role */}
           <Route
+            path="/admin/students"
+            element={
+              <PrivateRoute allowedRoles={["Admin"]}>
+                <ManageStudents />
+              </PrivateRoute>
+            } />
+          <Route
+            path="/admin/parents"
+            element={
+              <PrivateRoute allowedRoles={["Admin"]}>
+                <ManageParents />
+              </PrivateRoute>
+            } />
+          <Route
             path="/"
             element={
               <PrivateRoute>
@@ -78,6 +94,7 @@ function App() {
             }
           />
         </Routes>
+
       </BrowserRouter>
     </AuthProvider>
   )

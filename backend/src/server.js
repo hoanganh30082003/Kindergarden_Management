@@ -7,6 +7,8 @@ const accountRoutes = require('./routes/AccountRoutes');
 const attendanceRoutes = require('./routes/AttendanceRoutes');
 const timetableRoutes = require('./routes/ClassTimetableRoutes');
 const paymentRoutes = require('./routes/PaymentRoutes')
+const adminRoutes = require('./routes/AdminRoutes'); // ✅ Thêm dòng này
+
 const app = express();
 connectDB();
 
@@ -17,6 +19,7 @@ app.use('/api/auth', accountRoutes);
 app.use('/api/payment',paymentRoutes)
 app.use('/api/attendance', attendanceRoutes);
 app.use('/api/timetable', timetableRoutes);
+app.use('/api/admin', adminRoutes); // ✅ Thêm dòng này để định tuyến admin
 
 const PORT = process.env.PORT || 9999;
 app.listen(PORT, () => {
