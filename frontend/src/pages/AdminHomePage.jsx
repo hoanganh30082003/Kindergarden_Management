@@ -62,6 +62,28 @@ const AdminHomePage = () => {
     </Card.Body>
   </Card>
 </Col>
+<Col md={4}>
+  <Card className="text-center shadow-sm">
+    <Card.Body>
+      <Card.Title>Manage Meal Fees</Card.Title>
+      <Card.Text>Set breakfast, lunch, and snack fees.</Card.Text>
+      <Button variant="info" onClick={() => navigate("/admin/meal-fees")}>
+        Go to Meal Fee Management
+      </Button>
+    </Card.Body>
+  </Card>
+</Col>
+<Col md={4}>
+  <Card className="text-center shadow-sm">
+    <Card.Body>
+      <Card.Title>Manage Classes</Card.Title>
+      <Card.Text>View, add, and edit class information.</Card.Text>
+      <Button variant="secondary" onClick={() => navigate("/admin/classes")}>
+        Go to Class Management
+      </Button>
+    </Card.Body>
+  </Card>
+</Col>
 
         </Row>
       </Container>

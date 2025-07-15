@@ -24,10 +24,7 @@ const tuitionFeeSchema = new mongoose.Schema({
     default: 'Unpaid'
   }
 }, {
-  timestamps: {
-    createdAt: 'create_at',
-    updatedAt: 'update_at'
-  }
+  timestamps: true
 });
 
 module.exports = mongoose.model('TuitionFee', tuitionFeeSchema);

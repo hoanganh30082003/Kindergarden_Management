@@ -25,6 +25,11 @@ const mealFeeSchema = new mongoose.Schema({
   note: {
     type: String,
     default: ''
+  },
+  payment_status: {
+    type: String,
+    enum: ['Paid', 'Unpaid'],
+    default: 'Unpaid'
   }
 }, {
   timestamps: {

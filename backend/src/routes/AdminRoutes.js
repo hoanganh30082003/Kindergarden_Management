@@ -1,4 +1,6 @@
 const express = require('express');
+const mongoose = require('mongoose');
+
 const router = express.Router();
 const studentController = require('../controller/StudentController');
 const Parent = require("../model/ParentModel");
@@ -6,6 +8,8 @@ const User = require("../model/UserModel");
 const Teacher = require("../model/TeacherModel");
 const TuitionFee = require("../model/TuitionFeeModel");
 const Class = require('../model/ClassModel'); // import model Class
+const MealFee = require('../model/MealFeeModel');
+
 
 router.get('/students', studentController.getAllStudents);
 router.post('/students', studentController.createStudent);
@@ -196,7 +200,144 @@ router.put('/fees/:id', async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 });
+// Get all meal fees
+router.get('/meal-fees', async (req, res) => {
+  try {
+    const meals = await MealFee.find().populate('class_id');
+    res.json(meals);
+  } catch (err) {
+    console.error("/meal-fees error:", err);
+    res.status(500).json({ error: err.message });
+  }
+});
 
+// Create meal fee
+router.post('/meal-fees', async (req, res) => {
+  try {
+    const { class_id, effective_date, breakfast_fee, lunch_fee, snack_fee, note, payment_status } = req.body;
+    const newMeal = new MealFee({
+      class_id,
+      effective_date,
+      breakfast_fee: mongoose.Types.Decimal128.fromString(breakfast_fee.toString()),
+      lunch_fee: mongoose.Types.Decimal128.fromString(lunch_fee.toString()),
+      snack_fee: mongoose.Types.Decimal128.fromString(snack_fee.toString()),
+      note,
+      payment_status: payment_status || 'Unpaid'
+    });
+    const saved = await newMeal.save();
+    res.status(201).json(saved);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
+// Update meal fee status
+router.put('/meal-fees/:id/status', async (req, res) => {
+  try {
+    const updated = await MealFee.findByIdAndUpdate(req.params.id, {
+      payment_status: req.body.payment_status
+    }, { new: true });
+    res.json(updated);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
+router.delete('/meal-fees/:id', async (req, res) => {
+  try {
+    const deleted = await MealFee.findByIdAndDelete(req.params.id);
+    if (!deleted) return res.status(404).json({ error: "Meal fee not found" });
+    res.json({ message: "Meal fee deleted successfully" });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
+// Delete tuition fee
+router.delete('/fees/:id', async (req, res) => {
+  try {
+    const deleted = await TuitionFee.findByIdAndDelete(req.params.id);
+    if (!deleted) return res.status(404).json({ error: "Tuition fee not found" });
+    res.json({ message: "Tuition fee deleted successfully" });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+// Get all classes
+router.get('/', async (req, res) => {
+  try {
+    const classes = await Class.find().populate('teacher_id');
+    res.json(classes);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Create class
+// Create class
+router.post("/classes", async (req, res) => {
+  try {
+    const { class_name, capacity, teacher_id } = req.body;
+    if (!class_name || !capacity || !teacher_id) {
+      return res.status(400).json({ error: "Missing required fields" });
+    }
+
+    const newClass = new Class({
+      class_name,
+      capacity,
+      teacher_id: mongoose.Types.ObjectId(teacher_id),
+    });
+
+    const saved = await newClass.save();
+    res.status(201).json(saved);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
+// Get all classes
+router.get("/classes", async (req, res) => {
+  try {
+    const classes = await Class.find().populate({
+      path: "teacher_id",
+      populate: { path: "user_id", select: "full_name" },
+    });
+    res.json(classes);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Delete class
+router.delete("/classes/:id", async (req, res) => {
+  try {
+    const deleted = await Class.findByIdAndDelete(req.params.id);
+    if (!deleted) return res.status(404).json({ error: "Class not found" });
+    res.json({ message: "Class deleted successfully" });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+router.get("/classes", async (req, res) => {
+  try {
+    const classes = await Class.find().populate({
+      path: "teacher_id",
+      populate: {
+        path: "user_id",
+        select: "username"
+      }
+    });
+    res.json(classes);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+
+
+
+
+module.exports = router;
 module.exports = router;
 
 module.exports = router;

@@ -42,10 +42,25 @@ const ManageFees = () => {
     fetchFees();
   };
 
-  const updateStatus = async (id, newStatus) => {
-    await axios.put(`http://localhost:9999/api/admin/fees/${id}`, { payment_status: newStatus });
+  const updateStatus = async (id, currentStatus) => {
+    const newStatus = currentStatus === 'Paid' ? 'Unpaid' : 'Paid';
+    await axios.put(`http://localhost:9999/api/admin/fees/${id}`, {
+      payment_status: newStatus
+    });
     fetchFees();
   };
+
+  const deleteFee = async (id) => {
+    if (!window.confirm("Are you sure you want to delete this tuition fee?")) return;
+    await axios.delete(`http://localhost:9999/api/admin/fees/${id}`);
+    fetchFees();
+  };
+
+  const formatVND = (value) =>
+    new Intl.NumberFormat('vi-VN', {
+      style: 'currency',
+      currency: 'VND'
+    }).format(parseFloat(value?.$numberDecimal || value || 0));
 
   return (
     <div className="container mt-4">
@@ -68,24 +83,26 @@ const ManageFees = () => {
           {fees.map(fee => (
             <tr key={fee._id}>
               <td>{fee.class_id?.class_name || "N/A"}</td>
-              <td>
-  {new Intl.NumberFormat('vi-VN', {
-    style: 'currency',
-    currency: 'VND',
-  }).format(
-    parseFloat(fee.monthly_fee?.$numberDecimal || fee.monthly_fee || 0)
-  )}
-</td>
-
+              <td>{formatVND(fee.monthly_fee)}</td>
               <td>{new Date(fee.effective_date).toLocaleDateString()}</td>
               <td>{fee.note}</td>
               <td>{fee.payment_status}</td>
               <td>
-                {fee.payment_status !== 'Paid' && (
-                  <Button size="sm" variant="success" onClick={() => updateStatus(fee._id, 'Paid')}>
-                    Mark as Paid
-                  </Button>
-                )}
+                <Button
+                  size="sm"
+                  variant={fee.payment_status === 'Paid' ? 'warning' : 'success'}
+                  className="me-2"
+                  onClick={() => updateStatus(fee._id, fee.payment_status)}
+                >
+                  Mark as {fee.payment_status === 'Paid' ? 'Unpaid' : 'Paid'}
+                </Button>
+                <Button
+                  size="sm"
+                  variant="danger"
+                  onClick={() => deleteFee(fee._id)}
+                >
+                  Delete
+                </Button>
               </td>
             </tr>
           ))}
@@ -94,11 +111,11 @@ const ManageFees = () => {
 
       <Modal show={show} onHide={() => setShow(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>Add Fee</Modal.Title>
+          <Modal.Title>Add Tuition Fee</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="class_id">
+            <Form.Group controlId="class_id" className="mb-2">
               <Form.Label>Class</Form.Label>
               <Form.Select name="class_id" onChange={handleChange} required>
                 <option value="">Select class</option>
@@ -107,19 +124,23 @@ const ManageFees = () => {
                 ))}
               </Form.Select>
             </Form.Group>
-            <Form.Group controlId="monthly_fee">
+
+            <Form.Group controlId="monthly_fee" className="mb-2">
               <Form.Label>Monthly Fee</Form.Label>
               <Form.Control name="monthly_fee" type="number" step="0.01" required onChange={handleChange} />
             </Form.Group>
-            <Form.Group controlId="effective_date">
+
+            <Form.Group controlId="effective_date" className="mb-2">
               <Form.Label>Effective Date</Form.Label>
               <Form.Control name="effective_date" type="date" required onChange={handleChange} />
             </Form.Group>
-            <Form.Group controlId="note">
+
+            <Form.Group controlId="note" className="mb-2">
               <Form.Label>Note</Form.Label>
               <Form.Control name="note" as="textarea" rows={2} onChange={handleChange} />
             </Form.Group>
-            <Form.Group controlId="payment_status">
+
+            <Form.Group controlId="payment_status" className="mb-2">
               <Form.Label>Payment Status</Form.Label>
               <Form.Select name="payment_status" value={form.payment_status} onChange={handleChange}>
                 <option value="Unpaid">Unpaid</option>
@@ -127,6 +148,7 @@ const ManageFees = () => {
                 <option value="Paid">Paid</option>
               </Form.Select>
             </Form.Group>
+
             <Button className="mt-3" type="submit">Submit</Button>
           </Form>
         </Modal.Body>
