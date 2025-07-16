@@ -17,12 +17,14 @@ const tuitionFeeSchema = new mongoose.Schema({
   note: {
     type: String,
     default: ''
+  },
+  payment_status: {
+    type: String,
+    enum: ['Unpaid', 'Paid', 'Pending'],
+    default: 'Unpaid'
   }
 }, {
-  timestamps: {
-    createdAt: 'create_at',
-    updatedAt: 'update_at'
-  }
+  timestamps: true
 });
 
 module.exports = mongoose.model('TuitionFee', tuitionFeeSchema);
