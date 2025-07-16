@@ -13,6 +13,17 @@ const getMySchedule = async (req, res) => {
     }
 };
 
+const getScheduleForParent = async (req, res) => {
+    try {
+        const parentId = req.params.parentId;
+        const schedule = await ClassTimetableService.getScheduleForParent(parentId);
+        res.status(200).json(schedule);
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching class timetable for parent', error: error.message });
+    }
+};
+
 module.exports = {
     getMySchedule,
+    getScheduleForParent,
 };

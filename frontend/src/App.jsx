@@ -11,6 +11,7 @@ import RoleRedirect from "./components/RoleRedirect";
 import TransactionHistory from "./pages/TransactionHistory";
 import ManageStudents from "./pages/ManageStudents";
 import ManageParents from "./pages/ManageParents";
+
 function App() {
   return (
     <AuthProvider>

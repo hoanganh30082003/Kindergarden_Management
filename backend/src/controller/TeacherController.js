@@ -1,28 +1,47 @@
-const Teacher = require("../model/TeacherModel");
+const TeacherRepository = require('../repositories/TeacherRepository');
 
-exports.getAllTeachers = async (req, res) => {
-  const teachers = await Teacher.find().populate("user_id", "username email");
+const getAllTeachers = async (req, res) => {
+  const teachers = await TeacherRepository.findAll();
+  // Nếu cần populate, có thể làm ở đây hoặc trong repository
+  // Ví dụ: await TeacherModel.find().populate(...)
   res.json(teachers);
 };
 
-exports.createTeacher = async (req, res) => {
-  const teacher = new Teacher(req.body);
-  await teacher.save();
+const createTeacher = async (req, res) => {
+  const teacher = await TeacherRepository.create(req.body);
   res.status(201).json(teacher);
 };
 
-exports.updateTeacher = async (req, res) => {
-  const teacher = await Teacher.findByIdAndUpdate(req.params.id, req.body, { new: true });
+const updateTeacher = async (req, res) => {
+  const teacher = await TeacherRepository.updateById(req.params.id, req.body);
   res.json(teacher);
 };
 
-exports.deleteTeacher = async (req, res) => {
-  await Teacher.findByIdAndDelete(req.params.id);
+const deleteTeacher = async (req, res) => {
+  await TeacherRepository.deleteById(req.params.id);
   res.json({ message: "Teacher deleted" });
 };
 
-exports.getTeacherById = async (req, res) => {
-  const teacher = await Teacher.findById(req.params.id).populate("user_id", "username email");
+const getTeacherById = async (req, res) => {
+  const teacher = await TeacherRepository.findById(req.params.id);
   if (!teacher) return res.status(404).json({ message: "Teacher not found" });
   res.json(teacher);
 };
+
+const getTeacherByAccountId = async (req, res) => {
+  try {
+    const teacher = await TeacherRepository.findByAccountId(req.params.accountId);
+    if (!teacher) return res.status(404).json({ message: "Teacher not found" });
+    res.json(teacher);
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching teacher by accountId', error: error.message });
+  }
+};
+module.exports = {
+  createTeacher,
+  getAllTeachers,
+  updateTeacher,
+  deleteTeacher,
+  getTeacherById,
+  getTeacherByAccountId
+}

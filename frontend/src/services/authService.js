@@ -8,10 +8,28 @@ const login = async (email, password) => {
   localStorage.setItem("token", res.data.token);
   return res.data;
 };
+const getProfile = async (accountId) => {
 
+}
 const logout = () => {
   localStorage.removeItem("token");
   localStorage.removeItem("user");
 };
 
-export default { login, logout };
+const fetchProfile = async (user) => {
+  if (!user) throw new Error("User not found");
+  if (user.role === "Teacher" || user.role === "Parent") {
+    const url =
+      user.role === "Teacher"
+        ? `/api/teacher/${user.id}`
+        : `/api/parent/${user.id}`;
+    const res = await axios.get(url, {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    });
+    return res.data;
+  } else {
+    throw new Error("Invalid user role");
+  }
+};
+
+export default { login, logout, fetchProfile };
