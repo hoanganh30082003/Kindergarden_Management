@@ -3,17 +3,17 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 
 const RoleRedirect = () => {
-  const { user } = useContext(AuthContext);
+  const { account } = useContext(AuthContext);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (user) {
-      if (user.role === "Admin") navigate("/admin");
-      else if (user.role === "Teacher") navigate("/teacher");
-      else if (user.role === "Parent") navigate("/parent");
-      else if (user.role === "Accountant") navigate("/accountant");
+    if (account) {
+      if (account.role === "Admin") navigate("/admin");
+      else if (account.role === "Teacher") navigate("/teacher");
+      else if (account.role === "Parent") navigate("/parent");
+      else if (account.role === "Accountant") navigate("/accountant");
     }
-  }, [user, navigate]);
+  }, [account, navigate]);
 
   return null;
 };

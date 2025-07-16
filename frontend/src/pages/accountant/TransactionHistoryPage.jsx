@@ -94,10 +94,14 @@ const TransactionHistoryPage = () => {
   };
 
   const formatCurrency = (amount) => {
+    let value = amount;
+    if (amount && typeof amount === 'object' && amount.$numberDecimal) {
+      value = amount.$numberDecimal;
+    }
     return new Intl.NumberFormat('vi-VN', {
       style: 'currency',
       currency: 'VND'
-    }).format(amount);
+    }).format(Number(value));
   };
 
   const formatDate = (dateString) => {

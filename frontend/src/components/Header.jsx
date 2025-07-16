@@ -4,7 +4,7 @@ import { Navbar, Container, Nav, Button } from "react-bootstrap";
 import { AuthContext } from "../context/authContext";
 
 const Header = () => {
-  const { logout, user } = useContext(AuthContext);
+  const { logout, account } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -23,7 +23,7 @@ const Header = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            {user && (
+            {account && (
               <>
                 <Button variant="outline-primary" className="me-2" onClick={handleProfile}>
                   Profile

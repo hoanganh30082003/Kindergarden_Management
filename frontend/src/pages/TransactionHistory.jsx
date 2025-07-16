@@ -76,26 +76,25 @@ const minimalistStyles = {
 const TransactionHistory = () => {
     const [payments, setPayments] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState("");
-    const { user } = useContext(AuthContext);
+    const { account,profile } = useContext(AuthContext);
     const navigate = useNavigate();
 
     useEffect(() => {
         const fetchHistory = async () => {
-            if (user && user.role === "Parent") {
+            if (account && account.role === "Parent") {
                 setLoading(true);
                 try {
-                    const data = await paymentService.getTransactionHistory(user.id);
+                    const data = await paymentService.getParentTransactionHistory(profile._id);
                     setPayments(data);
                 } catch (err) {
-                    setError("Không thể lấy lịch sử giao dịch!");
+                    console.log(err);
                 } finally {
                     setLoading(false);
                 }
             }
         };
         fetchHistory();
-    }, [user]);
+    }, [profile,loading]);
 
     return (
         <>
@@ -125,17 +124,6 @@ const TransactionHistory = () => {
                                 <div style={{ padding: "0 0 18px 0", display: 'flex', justifyContent: 'center' }}>
                                     <span style={{ fontWeight: 600, fontSize: 22, color: "#222" }}>Lịch sử giao dịch đã thanh toán</span>
                                 </div>
-                                {error && (
-                                    <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
-                                        <Alert variant="danger" style={{
-                                            ...minimalistStyles.alert,
-                                            maxWidth: 400,
-                                            width: '100%',
-                                            textAlign: 'center',
-                                            boxSizing: 'border-box'
-                                        }}>{error}</Alert>
-                                    </div>
-                                )}
                                 {loading ? (
                                     <div className="text-center" style={{ padding: 40 }}><Spinner animation="border" /></div>
                                 ) : (

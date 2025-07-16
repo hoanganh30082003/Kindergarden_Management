@@ -1,11 +1,10 @@
 import React, { createContext, useState } from "react";
 import { useEffect } from "react";
-import axios from "axios";
 import authService from '../services/authService';
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(() => {
+  const [account, setAccount] = useState(() => {
     const saved = localStorage.getItem("user");
     return saved ? JSON.parse(saved) : null;
   });
@@ -14,33 +13,36 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const fetchAndSetProfile = async () => {
       try {
-        const data = await authService.fetchProfile(user);
+        const data = await authService.fetchProfile(account);
         setProfile(data);
       } catch (err) {
         console.log("Lỗi khi fetch profile:", err);
         setProfile(null);
       }
     };
-    fetchAndSetProfile();
-  }, [user]);
-  const login = (userData) => {
-    setUser(userData);
+    if(!account){
+      return;
+    }else if(account.role ==='Teacher' || account.role ==='Parent'){
+      fetchAndSetProfile();
+    }
+  }, [account]);
+  const login = (account) => {
+    setAccount(account);
     const userAccount = {
-      id: userData._id,
-      email: userData.email,
-      password: userData.password,
-      role: userData.role
+      _id: account._id,
+      email: account.email,
+      system_name: account.system_name,
+      role: account.role
     }
     localStorage.setItem("user", JSON.stringify(userAccount));
   };
   const logout = () => {
-    setUser(null);
+    setAccount(null);
     localStorage.removeItem("user");
     localStorage.removeItem("token");
   };
-
   return (
-    <AuthContext.Provider value={{ user, login, logout, profile }}>
+    <AuthContext.Provider value={{ account, login, logout, profile }}>
       {children}
     </AuthContext.Provider>
   );

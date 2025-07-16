@@ -1,12 +1,11 @@
 const authService = require('../service/AuthService');
-const UserRepository = require('../repositories/UserRepository');
 
 exports.login = async (req, res) => {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
 
   try {
-    const { token, user } = await authService.login(username, password);
-    res.json({ token, user });
+    const { token, account } = await authService.login(email, password);
+    res.json({ token, account });
   } catch (error) {
     res.status(401).json({ message: error.message });
   }
@@ -15,16 +14,7 @@ exports.login = async (req, res) => {
 exports.getProfile = async (req, res) => {
   try {
     const userId = req.user.id;
-    
-    const user = await UserRepository.findById(userId);
-    
-    if (!user) {
-      return res.status(404).json({ 
-        success: false, 
-        message: 'User not found' 
-      });
-    }
-
+    const user = await authService.getProfile(userId);
     const userProfile = {
       id: user._id,
       username: user.username,
@@ -37,14 +27,18 @@ exports.getProfile = async (req, res) => {
       createdAt: user.createdAt,
       updatedAt: user.updatedAt
     };
-
     res.json({
       success: true,
-      message: `Hello ${user.username}!`,
+      message: `Hello ${user.username || user.email}!`,
       user: userProfile
     });
-
   } catch (error) {
+    if (error.message === 'User not found') {
+      return res.status(404).json({
+        success: false,
+        message: 'User not found'
+      });
+    }
     res.status(500).json({
       success: false,
       message: 'Internal server error',

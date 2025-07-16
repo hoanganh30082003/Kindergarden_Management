@@ -16,10 +16,10 @@ const Login = () => {
     setError("");
     try {
       const res = await authService.login(email, password);
-      login(res.user);
+      login(res.account);
       navigate("/"); // chuyển hướng về trang chủ
     } catch (err) {
-      setError(err.response?.data?.message || "Login failed");
+      setError(err.message || "Login failed");
     }
   };
 

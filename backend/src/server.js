@@ -9,7 +9,6 @@ const paymentRoutes = require('./routes/PaymentRoutes')
 const adminRoutes = require('./routes/AdminRoutes'); 
 const parentRoutes = require('./routes/ParentRoutes')
 const authRoutes = require('./routes/AuthRoutes');
-const paymentRoutes = require('./routes/PaymentRoutes');
 const reportRoutes = require('./routes/ReportRoutes');
 const app=express();
 connectDB();

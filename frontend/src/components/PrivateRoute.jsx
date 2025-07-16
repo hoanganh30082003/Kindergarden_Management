@@ -3,12 +3,17 @@ import { Navigate } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 
 const PrivateRoute = ({ allowedRoles, children }) => {
-  const { user } = useContext(AuthContext);
-  if (!user) return <Navigate to="/login" />;
-  if (allowedRoles && !allowedRoles.includes(user.role)) {
-    return <div>You do not have permission to access this page.</div>;
+  const { account } = useContext(AuthContext);
+  console.log("PrivateRouter", account)
+  try {
+    if (!account) return <Navigate to="/login" />;
+    if (allowedRoles && !allowedRoles.includes(account.role)) {
+      return <div>You do not have permission to access this page.</div>;
+    }    
+    return children;
+  } catch (err) {
+    console.log(err)
   }
-  return children;
 };
 
 export default PrivateRoute;

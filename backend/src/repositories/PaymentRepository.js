@@ -1,4 +1,5 @@
 const PaymentModel = require('../model/PaymentModel');
+const mongoose = require('mongoose');
 
 const updatePaymentByVnPay = async (paymentId) => {
   return await PaymentModel.findByIdAndUpdate(
@@ -58,13 +59,13 @@ const getPaymentRecords = async (filters, page, limit) => {
     { $unwind: '$teacher' },
     {
       $lookup: {
-        from: 'users',
-        localField: 'teacher.user_id',
+        from: 'accounts',
+        localField: 'teacher.account_id',
         foreignField: '_id',
-        as: 'teacher_user'
+        as: 'teacher_account'
       }
     },
-    { $unwind: '$teacher_user' },
+    { $unwind: '$teacher_account' },
     {
       $lookup: {
         from: 'parents',
@@ -90,8 +91,8 @@ const getPaymentRecords = async (filters, page, limit) => {
         'class.capacity': 1,
         'teacher.qualification': 1,
         'teacher.experience_years': 1,
-        'teacher_user.system_name': 1,
-        'teacher_user.username': 1,
+        'teacher_account.system_name': 1,
+        'teacher_account.email': 1,
         'parent.full_name': 1,
         'parent._id': 1
       }
@@ -103,8 +104,8 @@ const getPaymentRecords = async (filters, page, limit) => {
   const dataPipeline = [...pipeline, { $skip: skip }, { $limit: parseInt(limit) }];
 
   const [countResult, payments] = await Promise.all([
-    Payment.aggregate(countPipeline),
-    Payment.aggregate(dataPipeline)
+    PaymentModel.aggregate(countPipeline),
+    PaymentModel.aggregate(dataPipeline)
   ]);
 
   const total = countResult[0]?.total || 0;
@@ -112,9 +113,12 @@ const getPaymentRecords = async (filters, page, limit) => {
   return { payments, total };
 };
 
+
 const getPaymentById = async (paymentId) => {
+  const objectId = new mongoose.Types.ObjectId(paymentId);
+
   const pipeline = [
-    { $match: { _id: paymentId } },
+    { $match: { _id: objectId } },
     {
       $lookup: {
         from: 'students',
@@ -144,13 +148,13 @@ const getPaymentById = async (paymentId) => {
     { $unwind: '$teacher' },
     {
       $lookup: {
-        from: 'users',
-        localField: 'teacher.user_id',
+        from: 'accounts',
+        localField: 'teacher.account_id',
         foreignField: '_id',
-        as: 'teacher_user'
+        as: 'teacher_account'
       }
     },
-    { $unwind: '$teacher_user' },
+    { $unwind: '$teacher_account' },
     {
       $lookup: {
         from: 'parents',
@@ -169,50 +173,40 @@ const getPaymentById = async (paymentId) => {
         status: 1,
         createdAt: 1,
         updatedAt: 1,
-        student: {
-          _id: 1,
-          full_name: 1,
-          date_of_birth: 1,
-          gender: 1,
-          address: 1,
-          health_info: 1,
-          student_photo: 1
-        },
-        class: {
-          _id: 1,
-          class_name: 1,
-          capacity: 1,
-          create_at: 1,
-          update_at: 1
-        },
-        teacher: {
-          _id: 1,
-          qualification: 1,
-          experience_years: 1,
-          hired_date: 1,
-          note: 1
-        },
-        teacher_user: {
-          _id: 1,
-          username: 1,
-          system_name: 1,
-          email: 1,
-          phone: 1,
-          status: 1
-        },
-        parent: {
-          _id: 1,
-          full_name: 1,
-          email: 1,
-          phone: 1
-        }
+        'student._id': 1,
+        'student.full_name': 1,
+        'student.date_of_birth': 1,
+        'student.gender': 1,
+        'student.address': 1,
+        'student.health_info': 1,
+        'student.student_photo': 1,
+        'class._id': 1,
+        'class.class_name': 1,
+        'class.capacity': 1,
+        'class.create_at': 1,
+        'class.update_at': 1,
+        'teacher._id': 1,
+        'teacher.qualification': 1,
+        'teacher.experience_years': 1,
+        'teacher.hired_date': 1,
+        'teacher.note': 1,
+        'teacher_account._id': 1,
+        'teacher_account.system_name': 1,
+        'teacher_account.email': 1,
+        'teacher_account.phone': 1,
+        'teacher_account.status': 1,
+        'parent._id': 1,
+        'parent.full_name': 1,
+        'parent.email': 1,
+        'parent.phone': 1
       }
     }
   ];
 
-  const result = await Payment.aggregate(pipeline);
+  const result = await PaymentModel.aggregate(pipeline);
   return result[0] || null;
 };
+
 
 const getTransactionHistory = async (filters, page, limit) => {
   const skip = (page - 1) * limit;
@@ -248,13 +242,13 @@ const getTransactionHistory = async (filters, page, limit) => {
     { $unwind: '$teacher' },
     {
       $lookup: {
-        from: 'users',
-        localField: 'teacher.user_id',
+        from: 'accounts',
+        localField: 'teacher.account_id',
         foreignField: '_id',
-        as: 'teacher_user'
+        as: 'teacher_account'
       }
     },
-    { $unwind: '$teacher_user' },
+    { $unwind: '$teacher_account' },
     {
       $project: {
         payment_date: 1,
@@ -268,8 +262,8 @@ const getTransactionHistory = async (filters, page, limit) => {
         'class.class_name': 1,
         'class._id': 1,
         'class.capacity': 1,
-        'teacher_user.system_name': 1,
-        'teacher_user.username': 1
+        'teacher_account.system_name': 1,
+        'teacher_account.username': 1
       }
     },
     { $sort: { payment_date: -1, createdAt: -1 } }
@@ -279,8 +273,8 @@ const getTransactionHistory = async (filters, page, limit) => {
   const dataPipeline = [...pipeline, { $skip: skip }, { $limit: parseInt(limit) }];
 
   const [countResult, transactions] = await Promise.all([
-    Payment.aggregate(countPipeline),
-    Payment.aggregate(dataPipeline)
+    PaymentModel.aggregate(countPipeline),
+    PaymentModel.aggregate(dataPipeline)
   ]);
 
   const total = countResult[0]?.total || 0;

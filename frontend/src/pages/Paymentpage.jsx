@@ -105,7 +105,7 @@ const PaymentPage = () => {
     const [error, setError] = useState("");
     const [payments, setPayments] = useState([]);
     const [loadingPayments, setLoadingPayments] = useState(true);
-    const { user } = useContext(AuthContext);
+    const { profile,account } = useContext(AuthContext);
     const location = useLocation();
     const [alertMsg, setAlertMsg] = useState("");
     const [showDetail, setShowDetail] = useState(false);
@@ -114,10 +114,10 @@ const PaymentPage = () => {
 
     useEffect(() => {
         const fetchPayments = async () => {
-            if (user && user.role === "Parent") {
+            if (account && account.role === "Parent") {
                 setLoadingPayments(true);
                 try {
-                    const data = await paymentService.getPaymentsByParentId(user.id);
+                    const data = await paymentService.getPaymentsByParentId(profile._id);
                     setPayments(data);
                 } catch (err) {
                     setError("Failed to fetch payments");
@@ -127,7 +127,7 @@ const PaymentPage = () => {
             }
         };
         fetchPayments();
-    }, [user]);
+    }, [account]);
 
     useEffect(() => {
         const params = new URLSearchParams(location.search);
@@ -266,7 +266,9 @@ const PaymentPage = () => {
                                                                             setDetailData(detail);
                                                                             setShowDetail(true);
                                                                         } catch (err) {
+                                                                            console.log(err);
                                                                             alert('Không thể lấy thông tin chi tiết!');
+                                                                            
                                                                         }
                                                                     }}
                                                                 >
@@ -293,17 +295,13 @@ const PaymentPage = () => {
                 <Modal.Body style={minimalistStyles.modalBody}>
                     {detailData ? (
                         <div style={{ lineHeight: 2 }}>
-                            <div><span style={minimalistStyles.modalLabel}>Học sinh:</span> <span style={minimalistStyles.modalValue}>{detailData.student_id?.full_name || detailData.student_id}</span></div>
+                            <div><span style={minimalistStyles.modalLabel}>Học sinh:</span> <span style={minimalistStyles.modalValue}>{detailData.student.full_name || detailData.student_id}</span></div>
                             <div><span style={minimalistStyles.modalLabel}>Số tiền:</span> <span style={{ ...minimalistStyles.modalValue, fontWeight: 600, fontSize: 18 }}>{detailData.amount && typeof detailData.amount === 'object' && detailData.amount.$numberDecimal
                                 ? Number(detailData.amount.$numberDecimal).toLocaleString()
                                 : Number(detailData.amount).toLocaleString()} VND</span></div>
                             <div><span style={minimalistStyles.modalLabel}>Loại:</span> <span style={minimalistStyles.modalValue}>{detailData.payment_type}</span></div>
-                            <div><span style={minimalistStyles.modalLabel}>Phương thức:</span> <span style={minimalistStyles.modalValue}>{detailData.method}</span></div>
                             <div><span style={minimalistStyles.modalLabel}>Trạng thái:</span> <span style={detailData.status === 'Paid' ? minimalistStyles.badgePaid : minimalistStyles.badgeUnpaid}>{detailData.status === 'Paid' ? 'Đã thanh toán' : 'Chưa thanh toán'}</span></div>
-                            <div><span style={minimalistStyles.modalLabel}>Ngày:</span> <span style={minimalistStyles.modalValue}>{detailData.payment_date ? new Date(detailData.payment_date).toLocaleString() : ''}</span></div>
                             <div><span style={minimalistStyles.modalLabel}>Ghi chú:</span> <span style={minimalistStyles.modalValue}>{detailData.note || ''}</span></div>
-                            <div><span style={minimalistStyles.modalLabel}>Tạo lúc:</span> <span style={minimalistStyles.modalValue}>{detailData.createdAt ? new Date(detailData.createdAt).toLocaleString() : ''}</span></div>
-                            <div><span style={minimalistStyles.modalLabel}>Cập nhật:</span> <span style={minimalistStyles.modalValue}>{detailData.updatedAt ? new Date(detailData.updatedAt).toLocaleString() : ''}</span></div>
                         </div>
                     ) : (
                         <div>Đang tải...</div>

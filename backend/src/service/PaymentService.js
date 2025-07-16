@@ -1,6 +1,5 @@
 const PaymentRepository = require('../repositories/PaymentRepository')
 const StudentModel = require('../model/StudentModel');
-const ParentModel = require('../model/ParentModel');
 
 const UpdatePaymentByVnPay = async (paymentId) =>{
     try {
@@ -26,29 +25,38 @@ const createPayment = async (data) => {
     }
   };
 
-const getPaymentsByParentId = async (accountId) => {
-  // Truy vấn sang bảng Parent để lấy parent id
-  const parent = await ParentModel.findOne({ account_id: accountId });
-  if (!parent) throw new Error('Parent not found for this account');
-  // Lấy danh sách student thuộc parent
-  const students = await StudentModel.find({ parent_id: parent._id });
+const getPaymentsByParentId = async (parentId) => {
+  const students = await StudentModel.find({ parent_id: parentId });
   const studentIds = students.map(s => s._id);
   // Lấy payment theo studentIds
   return await PaymentRepository.findByStudentIds(studentIds);
 };
 
-const getPaidPaymentsByStudentId = async (accountId) =>{
-    const parent = await ParentModel.findOne({ account_id: accountId });
-  if (!parent) throw new Error('Parent not found for this account');
-  // Lấy danh sách student thuộc parent
-  const students = await StudentModel.find({ parent_id: parent._id });
+const getPaidPaymentsByStudentId = async (parentId) =>{
+  const students = await StudentModel.find({ parent_id: parentId });
   const studentIds = students.map(s => s._id);
   // Lấy payment theo studentIds
   return await PaymentRepository.getPaidPaymentsByStudentId(studentIds);
 }
+
+const getPaymentRecords = async (filters, page, limit) => {
+    return await PaymentRepository.getPaymentRecords(filters, page, limit);
+};
+
+const getPaymentDetail = async (id) => {
+    return await PaymentRepository.getPaymentById(id);
+};
+
+const getTransactionHistory = async (filters, page, limit) => {
+    return await PaymentRepository.getTransactionHistory(filters, page, limit);
+};
+
 module.exports = {
     UpdatePaymentByVnPay,
     createPayment,
     getPaymentsByParentId,
-    getPaidPaymentsByStudentId
+    getPaidPaymentsByStudentId,
+    getPaymentRecords,
+    getPaymentDetail,
+    getTransactionHistory
 }

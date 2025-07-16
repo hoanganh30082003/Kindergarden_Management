@@ -17,8 +17,8 @@ const updateLastLogin = async (userId) => {
 }
 
 const findById = async (userId) => {
-    return await UserModel.findById(userId).select("-password");
-  };
+    return await AccountModel.findById(userId).select("-password");
+};
 module.exports = {
     findByEmailAndPassword,
     updateLastLogin,

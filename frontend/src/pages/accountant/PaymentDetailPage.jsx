@@ -18,9 +18,10 @@ const PaymentDetailPage = () => {
     try {
       setLoading(true);
       const response = await paymentService.getPaymentDetail(id);
-      setPayment(response.data);
+      console.log(response)
+      setPayment(response);
     } catch (err) {
-      setError(err.response?.data?.message || 'Failed to fetch payment detail');
+      setError(err.response?.data?.message);
     } finally {
       setLoading(false);
     }
@@ -52,10 +53,14 @@ const PaymentDetailPage = () => {
   };
 
   const formatCurrency = (amount) => {
+    let value = amount;
+    if (amount && typeof amount === 'object' && amount.$numberDecimal) {
+      value = amount.$numberDecimal;
+    }
     return new Intl.NumberFormat('vi-VN', {
       style: 'currency',
       currency: 'VND'
-    }).format(amount);
+    }).format(Number(value));
   };
 
   const formatDate = (dateString) => {
@@ -90,9 +95,9 @@ const PaymentDetailPage = () => {
   }
 
   return (
-    <AccountantLayout 
-      title="Payment Detail" 
-      subtitle={`Transaction details for payment ID: ${payment._id.slice(-8)}`}
+    <AccountantLayout
+      title="Payment Detail"
+      subtitle={`Transaction details for payment ID: ${id}`}
     >
       <Row className="mb-3">
         <Col>
@@ -119,7 +124,7 @@ const PaymentDetailPage = () => {
                     <Col sm={5}><strong>Payment ID:</strong></Col>
                     <Col sm={7}>
                       <code className="bg-light px-2 py-1 rounded">
-                        {payment._id.slice(-12)}
+                        {id}
                       </code>
                     </Col>
                   </Row>
@@ -174,9 +179,9 @@ const PaymentDetailPage = () => {
                 <Card.Body>
                   {payment.student.student_photo && (
                     <div className="text-center mb-3">
-                      <img 
-                        src={payment.student.student_photo} 
-                        alt="Student" 
+                      <img
+                        src={payment.student.student_photo}
+                        alt="Student"
                         className="rounded-circle border"
                         style={{ width: '80px', height: '80px', objectFit: 'cover' }}
                       />
@@ -189,7 +194,7 @@ const PaymentDetailPage = () => {
                   <Row className="mb-3">
                     <Col sm={5}><strong>Date of Birth:</strong></Col>
                     <Col sm={7}>
-                      {payment.student.date_of_birth 
+                      {payment.student.date_of_birth
                         ? new Date(payment.student.date_of_birth).toLocaleDateString('vi-VN')
                         : <span className="text-muted">Not provided</span>
                       }
@@ -270,23 +275,15 @@ const PaymentDetailPage = () => {
                   <Row className="mb-3">
                     <Col sm={5}><strong>Name:</strong></Col>
                     <Col sm={7}>
-                      {payment.teacher_user.system_name || payment.teacher_user.username}
-                    </Col>
-                  </Row>
-                  <Row className="mb-3">
-                    <Col sm={5}><strong>Username:</strong></Col>
-                    <Col sm={7}>
-                      <code className="bg-light px-2 py-1 rounded">
-                        {payment.teacher_user.username}
-                      </code>
+                      {payment.teacher_account.system_name || payment.teacher_account.username}
                     </Col>
                   </Row>
                   <Row className="mb-3">
                     <Col sm={5}><strong>Email:</strong></Col>
                     <Col sm={7}>
-                      {payment.teacher_user.email ? (
-                        <a href={`mailto:${payment.teacher_user.email}`} className="text-decoration-none">
-                          {payment.teacher_user.email}
+                      {payment.teacher_account.email ? (
+                        <a href={`mailto:${payment.teacher_account.email}`} className="text-decoration-none">
+                          {payment.teacher_account.email}
                         </a>
                       ) : (
                         <span className="text-muted">Not provided</span>
@@ -296,9 +293,9 @@ const PaymentDetailPage = () => {
                   <Row className="mb-3">
                     <Col sm={5}><strong>Phone:</strong></Col>
                     <Col sm={7}>
-                      {payment.teacher_user.phone ? (
-                        <a href={`tel:${payment.teacher_user.phone}`} className="text-decoration-none">
-                          {payment.teacher_user.phone}
+                      {payment.teacher_account.phone ? (
+                        <a href={`tel:${payment.teacher_account.phone}`} className="text-decoration-none">
+                          {payment.teacher_account.phone}
                         </a>
                       ) : (
                         <span className="text-muted">Not provided</span>
@@ -326,8 +323,8 @@ const PaymentDetailPage = () => {
                   <Row>
                     <Col sm={5}><strong>Status:</strong></Col>
                     <Col sm={7}>
-                      <Badge bg={payment.teacher_user.status === 'Active' ? 'success' : 'secondary'} className="px-2 py-1">
-                        {payment.teacher_user.status}
+                      <Badge bg={payment.teacher_account.status === 'Active' ? 'success' : 'secondary'} className="px-2 py-1">
+                        {payment.teacher_account.status}
                       </Badge>
                     </Col>
                   </Row>
@@ -408,23 +405,23 @@ const PaymentDetailPage = () => {
             </Card.Header>
             <Card.Body>
               <div className="d-grid gap-2">
-                <Button 
-                  as={Link} 
-                  to="/payment-records" 
+                <Button
+                  as={Link}
+                  to="/payment-records"
                   variant="primary"
                 >
                   <i className="fas fa-list me-2"></i>
                   View All Records
                 </Button>
-                <Button 
-                  as={Link} 
-                  to="/transaction-history" 
+                <Button
+                  as={Link}
+                  to="/transaction-history"
                   variant="outline-info"
                 >
                   <i className="fas fa-history me-2"></i>
                   Transaction History
                 </Button>
-                <Button 
+                <Button
                   variant="outline-secondary"
                   onClick={() => window.print()}
                 >
@@ -446,8 +443,8 @@ const PaymentDetailPage = () => {
               <div className="timeline">
                 <div className="d-flex mb-3">
                   <div className="flex-shrink-0">
-                    <div className="bg-success rounded-circle d-flex align-items-center justify-content-center text-white" 
-                         style={{ width: '32px', height: '32px' }}>
+                    <div className="bg-success rounded-circle d-flex align-items-center justify-content-center text-white"
+                      style={{ width: '32px', height: '32px' }}>
                       <i className="fas fa-plus"></i>
                     </div>
                   </div>
@@ -458,17 +455,15 @@ const PaymentDetailPage = () => {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="d-flex mb-3">
                   <div className="flex-shrink-0">
-                    <div className={`rounded-circle d-flex align-items-center justify-content-center text-white ${
-                      payment.status === 'Paid' ? 'bg-success' : 
-                      payment.status === 'Pending' ? 'bg-warning' : 'bg-danger'
-                    }`} style={{ width: '32px', height: '32px' }}>
-                      <i className={`fas ${
-                        payment.status === 'Paid' ? 'fa-check' : 
-                        payment.status === 'Pending' ? 'fa-clock' : 'fa-times'
-                      }`}></i>
+                    <div className={`rounded-circle d-flex align-items-center justify-content-center text-white ${payment.status === 'Paid' ? 'bg-success' :
+                        payment.status === 'Pending' ? 'bg-warning' : 'bg-danger'
+                      }`} style={{ width: '32px', height: '32px' }}>
+                      <i className={`fas ${payment.status === 'Paid' ? 'fa-check' :
+                          payment.status === 'Pending' ? 'fa-clock' : 'fa-times'
+                        }`}></i>
                     </div>
                   </div>
                   <div className="flex-grow-1 ms-3">
@@ -497,7 +492,7 @@ const PaymentDetailPage = () => {
                 <h5 className="mb-1">{payment.class.class_name}</h5>
                 <p className="text-muted mb-2">Capacity: {payment.class.capacity} students</p>
                 <p className="text-muted mb-0">
-                  Teacher: {payment.teacher_user.system_name || payment.teacher_user.username}
+                  Teacher: {payment.teacher_account.system_name || payment.teacher_account.username}
                 </p>
               </div>
             </Card.Body>

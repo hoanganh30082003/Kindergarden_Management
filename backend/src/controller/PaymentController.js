@@ -58,7 +58,7 @@ const getPaymentRecords = async (req, res) => {
     if (student_id) filters.student_id = student_id;
     if (class_id) filters.class_id = class_id;
 
-    const result = await PaymentRepository.getPaymentRecords(filters, page, limit);
+    const result = await paymentService.getPaymentRecords(filters, page, limit);
 
     res.json({
       success: true,
@@ -82,16 +82,14 @@ const getPaymentRecords = async (req, res) => {
 const getPaymentDetail = async (req, res) => {
   try {
     const { id } = req.params;
-
-    const payment = await PaymentRepository.getPaymentById(id);
-
+    console.log(id);
+    const payment = await paymentService.getPaymentDetail(id);
     if (!payment) {
       return res.status(404).json({
         success: false,
         message: 'Payment not found'
       });
     }
-
     res.json({
       success: true,
       data: payment
@@ -107,9 +105,9 @@ const getPaymentDetail = async (req, res) => {
 
 const getParentTransactionHistory = async (req, res) => {
   try {
-    const { accountId } = req.query;
-    if (!accountId) return res.status(400).json({ error: 'Missing accountId' });
-    const payments = await paymentService.getPaidPaymentsByStudentId(accountId);
+    const { parentId } = req.query;
+    if (!parentId) return res.status(400).json({ error: 'Missing parentId' });
+    const payments = await paymentService.getPaidPaymentsByStudentId(parentId);
     res.json({ data: payments });
   } catch (error) {
     console.error('Error getting payments by parent:', error);
@@ -141,7 +139,7 @@ const getTransactionHistory = async (req, res) => {
     if (payment_type) filters.payment_type = payment_type;
     if (method) filters.method = method;
 
-    const result = await PaymentRepository.getTransactionHistory(filters, page, limit);
+    const result = await paymentService.getTransactionHistory(filters, page, limit);
 
     res.json({
       success: true,

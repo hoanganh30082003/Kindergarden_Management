@@ -11,7 +11,6 @@ import RoleRedirect from "./components/RoleRedirect";
 import TransactionHistory from "./pages/TransactionHistory";
 import ManageStudents from "./pages/ManageStudents";
 import ManageParents from "./pages/ManageParents";
-import ProfilePage from "./pages/accountant/ProfilePage";
 import PaymentRecordsPage from "./pages/accountant/PaymentRecordsPage";
 import PaymentDetailPage from "./pages/accountant/PaymentDetailPage";
 import TransactionHistoryPage from "./pages/accountant/TransactionHistoryPage";
@@ -24,7 +23,6 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<LoginPage />} />
-          {/* Homepages theo role */}
           <Route
             path="/admin"
             element={
@@ -58,7 +56,6 @@ function App() {
             }
           />
 
-          {/* Trang chỉ parent mới vào được */}
           <Route
             path="/payment"
             element={
@@ -68,7 +65,6 @@ function App() {
             }
           />
 
-          {/* Route mặc định: tự động chuyển hướng về đúng homepage theo role */}
           <Route
             path="/admin/students"
             element={
@@ -100,7 +96,6 @@ function App() {
               </PrivateRoute>
             }
           />
-          <Route path="/profile" element={<ProfilePage />} />
           <Route path="/payment-records" element={<PaymentRecordsPage />} />
           <Route path="/payment-detail/:id" element={<PaymentDetailPage />} />
           <Route
@@ -110,7 +105,6 @@ function App() {
           <Route path="/tuition-reports" element={<TuitionReportsPage />} />
           <Route path="/meal-fee-reports" element={<MealFeeReportsPage />} />
         </Routes>
-
       </BrowserRouter>
     </AuthProvider>
   );

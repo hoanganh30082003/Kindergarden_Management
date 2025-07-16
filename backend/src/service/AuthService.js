@@ -2,14 +2,14 @@ const jwt = require('jsonwebtoken');
 const AccountRepository = require('../repositories/AccountRepository');
 
 const login = async (email, password) => {
-  const user = await AccountRepository.findByEmailAndPassword(email,password);
+  const account = await AccountRepository.findByEmailAndPassword(email,password);
 
-  if (!user) {
+  if (!account) {
     throw new Error('Invalid credentials');
   }
-  await AccountRepository.updateLastLogin(user._id);
-  const token = generateToken(user);
-  return { token, user };
+  await AccountRepository.updateLastLogin(account._id);
+  const token = generateToken(account);
+  return { token, account };
 };
 
 const generateToken = (user) => {
@@ -17,4 +17,12 @@ const generateToken = (user) => {
   return token;
 };
 
-module.exports = { login };
+const getProfile = async (userId) => {
+  const user = await AccountRepository.findById(userId);
+  if (!user) {
+    throw new Error('User not found');
+  }
+  return user;
+};
+
+module.exports = { login, getProfile };
