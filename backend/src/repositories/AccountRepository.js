@@ -15,7 +15,12 @@ const updateLastLogin = async (userId) => {
         { new: true }
     );
 }
+
+const findById = async (userId) => {
+    return await UserModel.findById(userId).select("-password");
+  };
 module.exports = {
     findByEmailAndPassword,
-    updateLastLogin
+    updateLastLogin,
+    findById
 };
