@@ -31,7 +31,7 @@ const ManageClasses = () => {
 
   const fetchClasses = async () => {
     try {
-      const res = await axios.get("http://localhost:9999/api/admin/classes");
+      const res = await axios.get("/api/class");
       setClasses(res.data);
     } catch (err) {
       console.error("Failed to fetch classes:", err);
@@ -40,7 +40,7 @@ const ManageClasses = () => {
 
   const fetchTeachers = async () => {
     try {
-      const res = await axios.get("http://localhost:9999/api/admin/teachers");
+      const res = await axios.get("/api/teacher");
       setTeachers(res.data);
     } catch (err) {
       console.error("Failed to fetch teachers:", err);
@@ -49,7 +49,7 @@ const ManageClasses = () => {
 
   const fetchStudents = async () => {
     try {
-      const res = await axios.get("http://localhost:9999/api/admin/students");
+      const res = await axios.get("/api/student");
       setStudents(res.data);
     } catch (err) {
       console.error("Failed to fetch students:", err);
@@ -58,7 +58,7 @@ const ManageClasses = () => {
 
   const fetchParents = async () => {
     try {
-      const res = await axios.get("http://localhost:9999/api/admin/parents");
+      const res = await axios.get("/api/parent");
       setParents(res.data);
     } catch (err) {
       console.error("Failed to fetch parents:", err);
@@ -87,7 +87,7 @@ const ManageClasses = () => {
     e.preventDefault();
     if (!selectedClass) return;
     try {
-      await axios.post("http://localhost:9999/api/admin/students", {
+      await axios.post("/api/student", {
         ...newStudent,
         class_id: selectedClass._id
       });
@@ -103,7 +103,7 @@ const ManageClasses = () => {
   const handleDeleteStudent = async (studentId) => {
     if (!window.confirm("Bạn có chắc muốn xóa học sinh này?")) return;
     try {
-      await axios.delete(`http://localhost:9999/api/admin/students/${studentId}`);
+      await axios.delete(`/api/student/${studentId}`);
       fetchStudents();
       setStudentsInClass(studentsInClass.filter(s => s._id !== studentId));
     } catch (err) {
@@ -115,7 +115,7 @@ const ManageClasses = () => {
     e.preventDefault();
     try {
       console.log(formData);
-      await axios.post("http://localhost:9999/api/admin/classes", formData);
+      await axios.post("/api/class", formData);
       setShow(false);
       setFormData({ class_name: "", capacity: "", teacher_id: "" });
       fetchClasses();
@@ -129,7 +129,7 @@ const ManageClasses = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:9999/api/admin/classes/${id}`);
+      await axios.delete(`/api/class/${id}`);
       fetchClasses();
     } catch (err) {
       console.error("Failed to delete class:", err);

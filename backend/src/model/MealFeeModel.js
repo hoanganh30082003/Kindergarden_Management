@@ -27,7 +27,7 @@ const mealFeeSchema = new mongoose.Schema({
     default: ''
   },
   last_editor: {
-  type: mongoose.type.Schema.ObjectId,
+  type: mongoose.Schema.Types.ObjectId,
   ref: 'Account',
   required: true
   }

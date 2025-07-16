@@ -1,7 +1,7 @@
 const TeacherModel = require('../model/TeacherModel');
 
-const findByUserId = async (userId) => {
-    return await TeacherModel.findOne({ user_id: userId });
+const findByUserId = async (accountId) => {
+    return await TeacherModel.findOne({ account_id: accountId });
 }
 
 const findByAccountId = async (accountId) => {
@@ -9,7 +9,7 @@ const findByAccountId = async (accountId) => {
 }
 
 const createTeacher = (data) => {
-    return Teacher.create(data);
+    return TeacherModel.create(data);
 };
 
 const updateById = async (id, data) => {
@@ -25,11 +25,11 @@ const findById = async (id) => {
 };
 
 const getAllTeachers = () => {
-    return Teacher.find().populate('user_id', 'username');
+    return TeacherModel.find().populate('account_id');
 };
 
 const getTeacherById = (id) => {
-    return require('../model/TeacherModel').findById(id).populate('user_id', 'username');
+    return TeacherModel.findById(id).populate('account_id');
 };
 module.exports = {
     findByUserId,

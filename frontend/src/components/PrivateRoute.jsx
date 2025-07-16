@@ -4,7 +4,6 @@ import { AuthContext } from "../context/authContext";
 
 const PrivateRoute = ({ allowedRoles, children }) => {
   const { account } = useContext(AuthContext);
-  console.log("PrivateRouter", account)
   try {
     if (!account) return <Navigate to="/login" />;
     if (allowedRoles && !allowedRoles.includes(account.role)) {

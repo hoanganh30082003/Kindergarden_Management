@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
-import Header from '../components/Header'; 
-import SidebarAccountant from "../components/accountant/AccountantSidebar";
+import Header from '../../components/Header'; 
+import SidebarAccountant from "../../components/accountant/AccountantSidebar";
 
 const AccountantHomePage = () => {
   return (

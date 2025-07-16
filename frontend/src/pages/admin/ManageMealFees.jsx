@@ -22,7 +22,7 @@ const ManageMealFees = () => {
 
   const fetchMealFees = async () => {
     try {
-      const res = await axios.get("http://localhost:9999/api/admin/meal-fees");
+      const res = await axios.get("/api/meal-fee");
       setMealFees(res.data);
     } catch (err) {
       console.error("Failed to fetch meal fees:", err);
@@ -31,7 +31,7 @@ const ManageMealFees = () => {
 
   const fetchClasses = async () => {
     try {
-      const res = await axios.get("http://localhost:9999/api/admin/classes");
+      const res = await axios.get("/api/class");
       setClasses(res.data);
     } catch (err) {
       console.error("Failed to fetch classes:", err);
@@ -57,7 +57,7 @@ const ManageMealFees = () => {
         snack_fee: form.snack_fee.toString(),
         payment_status: "Unpaid"
       };
-      await axios.post("http://localhost:9999/api/admin/meal-fees", payload);
+      await axios.post("/api/meal-fee", payload);
       setShow(false);
       fetchMealFees();
     } catch (err) {
@@ -67,7 +67,7 @@ const ManageMealFees = () => {
 
   const handleToggleStatus = async (id, currentStatus) => {
     try {
-      await axios.put(`http://localhost:9999/api/admin/meal-fees/${id}/status`, {
+      await axios.put(`/api/meal-fee/${id}`, {
         payment_status: currentStatus === 'Paid' ? 'Unpaid' : 'Paid'
       });
       fetchMealFees();
@@ -79,7 +79,7 @@ const ManageMealFees = () => {
   const deleteMealFee = async (id) => {
     if (!window.confirm("Are you sure you want to delete this meal fee?")) return;
     try {
-      await axios.delete(`http://localhost:9999/api/admin/meal-fees/${id}`);
+      await axios.delete(`/api/meal-fee/${id}`);
       fetchMealFees();
     } catch (err) {
       console.error("Failed to delete meal fee:", err);
@@ -131,9 +131,9 @@ const ManageMealFees = () => {
             <tr key={meal._id}>
               <td>{meal.class_id?.class_name || meal.class_id}</td>
               <td>{meal.effective_date ? new Date(meal.effective_date).toLocaleDateString() : ''}</td>
-              <td>{typeof meal.breakfast_fee === 'object' ? meal.breakfast_fee.$numberDecimal : meal.breakfast_fee}</td>
-              <td>{typeof meal.lunch_fee === 'object' ? meal.lunch_fee.$numberDecimal : meal.lunch_fee}</td>
-              <td>{typeof meal.snack_fee === 'object' ? meal.snack_fee.$numberDecimal : meal.snack_fee}</td>
+              <td>{typeof meal.breakfast_fee === 'object' ? formatCurrency(meal.breakfast_fee.$numberDecimal) : meal.breakfast_fee}</td>
+              <td>{typeof meal.lunch_fee === 'object' ? formatCurrency(meal.lunch_fee.$numberDecimal) : meal.lunch_fee}</td>
+              <td>{typeof meal.snack_fee === 'object' ? formatCurrency(meal.snack_fee.$numberDecimal) : meal.snack_fee}</td>
               <td>{meal.note}</td>
               <td>
                 <span className={meal.payment_status === 'Paid' ? 'text-success fw-bold' : 'text-danger fw-bold'}>

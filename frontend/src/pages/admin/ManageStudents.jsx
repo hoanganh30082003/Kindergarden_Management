@@ -26,7 +26,7 @@ const ManageStudents = () => {
 
   const fetchStudents = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/admin/students");
+      const res = await axios.get("/api/student");
       setStudents(res.data);
     } catch (err) {
       console.error("Fetch error:", err.message);
@@ -34,11 +34,11 @@ const ManageStudents = () => {
   };
 
   const fetchParents = async () => {
-    const res = await axios.get("http://localhost:9999/api/admin/parents");
+    const res = await axios.get("/api/parent");
     setParents(res.data);
   };
   const fetchClasses = async () => {
-    const res = await axios.get("http://localhost:9999/api/admin/classes");
+    const res = await axios.get("/api/class");
     setClasses(res.data);
   };
 
@@ -46,12 +46,12 @@ const ManageStudents = () => {
     try {
       let data = { ...form };
       if (!data.student_photo) {
-        data.student_photo = "https://via.placeholder.com/80x80?text=Student"; // ảnh mặc định
+        data.student_photo = "https://static.vecteezy.com/system/resources/previews/006/487/917/original/man-avatar-icon-free-vector.jpg"; // ảnh mặc định
       }
       if (editingId) {
-        await axios.put(`http://localhost:5000/api/admin/students/${editingId}`, data);
+        await axios.put(`/api/student/${editingId}`, data);
       } else {
-        await axios.post("http://localhost:5000/api/admin/students", data);
+        await axios.post("/api/student", data);
       }
       fetchStudents();
       setShowModal(false);
@@ -90,7 +90,7 @@ const ManageStudents = () => {
   };
 
   const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:5000/api/admin/students/${id}`);
+    await axios.delete(`/api/student/${id}`);
     fetchStudents();
   };
 
@@ -117,7 +117,7 @@ const ManageStudents = () => {
             gender: "Male",
             address: "",
             health_info: "",
-            student_photo: "https://via.placeholder.com/80x80?text=Student",
+            student_photo: "https://static.vecteezy.com/system/resources/previews/006/487/917/original/man-avatar-icon-free-vector.jpg",
             parent_id: "",
             class_id: ""
           });
@@ -153,7 +153,7 @@ const ManageStudents = () => {
               <td>
                 {s.student_photo ? (
                   <img
-                    src={s.student_photo}
+                    src="https://static.vecteezy.com/system/resources/previews/006/487/917/original/man-avatar-icon-free-vector.jpg"
                     alt="Student"
                     width={50}
                     height={50}
@@ -197,7 +197,6 @@ const ManageStudents = () => {
               <Form.Select value={form.gender} onChange={(e) => setForm({ ...form, gender: e.target.value })}>
                 <option>Male</option>
                 <option>Female</option>
-                <option>Other</option>
               </Form.Select>
             </Form.Group>
             <Form.Group className="mb-2">

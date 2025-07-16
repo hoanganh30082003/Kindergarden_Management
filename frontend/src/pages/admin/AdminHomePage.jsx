@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import Header from "../components/Header";
+import Header from "../../components/Header";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../context/authContext";
+import { AuthContext } from "../../context/authContext";
 
 const AdminHomePage = () => {
   const { user } = useContext(AuthContext);

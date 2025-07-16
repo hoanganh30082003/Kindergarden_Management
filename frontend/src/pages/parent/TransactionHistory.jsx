@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
-import paymentService from "../services/paymentService";
+import paymentService from "../../services/paymentService";
 import { Container, Row, Col, Card, Table, Spinner, Alert, Button } from "react-bootstrap";
-import { AuthContext } from "../context/authContext";
-import Header from "../components/Header";
+import { AuthContext } from "../../context/authContext";
+import Header from "../../components/Header";
 import { useNavigate } from "react-router-dom";
 import { BsArrowLeft } from "react-icons/bs";
 

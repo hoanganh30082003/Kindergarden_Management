@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
-import Timetable from "../components/Timetable";
-import Header from "../components/Header";
-import classtimetableService from "../services/classtimetableService";
-import { AuthContext } from "../context/authContext";
+import Timetable from "../../components/Timetable";
+import Header from "../../components/Header";
+import classtimetableService from "../../services/classtimetableService";
+import { AuthContext } from "../../context/authContext";
 import { Container, Row, Col, Card, Button, Nav } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 

@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
-import paymentService from "../services/paymentService";
+import paymentService from "../../services/paymentService";
 import { Container, Row, Col, Card, Form, Button, Alert, Table, Spinner } from "react-bootstrap";
-import { AuthContext } from "../context/authContext";
-import Header from "../components/Header";
+import { AuthContext } from "../../context/authContext";
+import Header from "../../components/Header";
 import { useLocation, useNavigate } from "react-router-dom";
 import Modal from 'react-bootstrap/Modal';
 import { BsArrowLeft } from "react-icons/bs";

@@ -19,11 +19,11 @@ const updateLastLogin = async (userId) => {
 const findById = async (userId) => {
     return await AccountModel.findById(userId).select("-password");
 };
-const createUser = (data) => {
+const createAccount = (data) => {
     return AccountModel.create(data);
 };
 
-const deleteUser = (id) => {
+const deleteAccount = (id) => {
     return AccountModel.findByIdAndDelete(id);
 };
 
@@ -31,16 +31,15 @@ const updateStatus = (id, status) => {
     return AccountModel.findByIdAndUpdate(id, { status }, { new: true });
 };
 
-const findBySystemName = (stystemName) => {
-    return AccountModel.findOne({ stystemName });
+const findByEmail = (email) => {
+    return AccountModel.findOne({ email });
 };
 module.exports = {
     findByEmailAndPassword,
     updateLastLogin,
     findById,
-    createUser,
-    createUser,
-    deleteUser,
+    createAccount,
+    deleteAccount,
     updateStatus,
-    findBySystemName
+    findByEmail
 };

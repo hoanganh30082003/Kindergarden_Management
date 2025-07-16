@@ -1,9 +1,5 @@
 const Student = require('../model/StudentModel');
 
-const Parent = require('../model/ParentModel');
-const Class = require('../model/ClassModel');
-
-
 exports.getAllStudents = async (req, res) => {
   try {
     const students = await Student.find()

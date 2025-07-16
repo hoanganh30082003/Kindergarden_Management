@@ -2,26 +2,24 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute";
 import { AuthProvider } from "./context/authContext";
 import LoginPage from "./pages/LoginPage";
-import PaymentPage from "./pages/Paymentpage";
-import AdminHomePage from "./pages/AdminHomePage";
-import TeacherHomePage from "./pages/TeacherHomePage";
-import ParentHomePage from "./pages/ParentHomePage";
-import AccountantHomePage from "./pages/AccountantHomePage";
+import PaymentPage from "./pages/parent/Paymentpage";
+import AdminHomePage from "./pages/admin/AdminHomePage";
+import TeacherHomePage from "./pages/teacher/TeacherHomePage";
+import ParentHomePage from "./pages/parent/ParentHomePage";
+import AccountantHomePage from "./pages/accountant/AccountantHomePage";
 import RoleRedirect from "./components/RoleRedirect";
-import TransactionHistory from "./pages/TransactionHistory";
-import ManageStudents from "./pages/ManageStudents";
-import ManageParents from "./pages/ManageParents";
+import TransactionHistory from "./pages/parent/TransactionHistory";
+import ManageStudents from "./pages/admin/ManageStudents";
+import ManageParents from "./pages/admin/ManageParents";
 import PaymentRecordsPage from "./pages/accountant/PaymentRecordsPage";
 import PaymentDetailPage from "./pages/accountant/PaymentDetailPage";
 import TransactionHistoryPage from "./pages/accountant/TransactionHistoryPage";
 import TuitionReportsPage from "./pages/accountant/TuitionReportsPage";
 import MealFeeReportsPage from "./pages/accountant/MealFeeReportsPage";
-import ManageTeachers from "./pages/ManageTeachers";
-import ManageFees from "./pages/ManageFees"; // 
-import ManageMealFees from "./pages/ManageMealFees";  
-import ManageClasses from "./pages/ManageClass";
-
-
+import ManageTeachers from "./pages/admin/ManageTeachers";
+import ManageFees from "./pages/admin/ManageFees"; // 
+import ManageMealFees from "./pages/admin/ManageMealFees";  
+import ManageClasses from "./pages/admin/ManageClass";
 
 function App() {
   return (

@@ -1,5 +1,5 @@
 const parentRepository = require('../repositories/ParentRepository')
-
+const accountRepository = require('../repositories/AccountRepository')
 exports.getParentByAccountId = async (accountId) => {
     try {
         const result = await parentRepository.findByAccountId(accountId);
@@ -19,11 +19,11 @@ exports.getAllParents = () => {
 
 exports.createParent = async (data) => {
   // Tạo user trước
-  const user = await UserRepository.createUser({
-    username: data.username,
+  const account = await accountRepository.createAccount({
     password: data.password,
     email: data.email,
     phone: data.phone,
+    system_name: data.email,
     role: 'Parent'
   });
   // Tạo parent
@@ -36,9 +36,9 @@ exports.createParent = async (data) => {
     email: data.email,
     occupation: data.occupation,
     relationship: data.relationship,
-    user_id: user._id
+    account_id: account._id
   });
-  return { user, parent };
+  return { account, parent };
 };
 
 exports.updateParent = (id, data) => {
@@ -46,17 +46,16 @@ exports.updateParent = (id, data) => {
 };
 
 exports.deleteParent = async (id) => {
-  // Xóa parent và user liên kết
   const parent = await parentRepository.getParentById(id);
   if (!parent) throw new Error('Parent not found');
-  await UserRepository.deleteUser(parent.user_id);
+  await accountRepository.deleteAccount(parent.user_id);
   await parentRepository.deleteParent(id);
-  return { message: 'Parent and user deleted successfully' };
+  return { message: 'Parent and account deleted successfully' };
 };
 
 exports.updateStatus = async (id, status) => {
   const parent = await parentRepository.getParentById(id);
   if (!parent) throw new Error('Parent not found');
-  await UserRepository.updateStatus(parent.user_id, status);
+  await accountRepository.updateStatus(parent.user_id, status);
   return { message: 'Status updated', status };
 }; 

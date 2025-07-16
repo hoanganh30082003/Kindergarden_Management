@@ -47,7 +47,10 @@ const deleteParent = async (req, res) => {
     res.json(result);
   } catch (err) {
     console.error("Error deleting parent:", err);
-    res.status(500).json({ error: "Failed to delete parent" });
+    res.status(500).json({ 
+        error: "Failed to delete parent",
+        message: err.message
+    });
   }
 };
 

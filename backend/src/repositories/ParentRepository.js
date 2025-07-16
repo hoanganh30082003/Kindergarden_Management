@@ -4,21 +4,21 @@ exports.findByAccountId = async (accountId) => {
     return await ParentModel.findOne({ account_id: accountId });
 };
 exports.getAllParents = () => {
-  return Parent.find().populate('user_id', 'username email phone status');
+  return ParentModel.find();
 };
 
 exports.createParent = (data) => {
-  return Parent.create(data);
+  return ParentModel.create(data);
 };
 
 exports.updateParent = (id, data) => {
-  return Parent.findByIdAndUpdate(id, data, { new: true });
+  return ParentModel.findByIdAndUpdate(id, data, { new: true });
 };
 
 exports.deleteParent = (id) => {
-  return Parent.findByIdAndDelete(id);
+  return ParentModel.findByIdAndDelete(id);
 };
 
 exports.getParentById = (id) => {
-  return Parent.findById(id);
+  return ParentModel.findById(id);
 };

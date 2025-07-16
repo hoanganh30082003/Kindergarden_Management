@@ -35,7 +35,7 @@ const ManageParents = () => {
 
   const fetchParents = async () => {
     try {
-      const res = await axios.get("http://localhost:9999/api/admin/parents");
+      const res = await axios.get("/api/parent");
       setParents(res.data);
     } catch (err) {
       console.error("Error fetching parents:", err);
@@ -57,7 +57,7 @@ const ManageParents = () => {
       return;
     }
     try {
-      await axios.post("http://localhost:9999/api/admin/parents", {
+      await axios.post("/api/parents", {
         username: formData.username,
         password: formData.password,
         email: formData.email,
@@ -91,7 +91,7 @@ const ManageParents = () => {
   const handleToggleStatus = async (parent) => {
     try {
       const newStatus = parent.user_id?.status === 'Active' ? 'Inactive' : 'Active';
-      await axios.put(`http://localhost:9999/api/admin/parents/${parent._id}/status`, {
+      await axios.put(`/api/parent/${parent._id}/status`, {
         status: newStatus
       });
       fetchParents();

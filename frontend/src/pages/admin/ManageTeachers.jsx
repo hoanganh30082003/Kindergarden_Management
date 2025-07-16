@@ -24,7 +24,8 @@ const ManageTeachers = () => {
 
   const fetchTeachers = async () => {
     try {
-      const res = await axios.get("http://localhost:9999/api/admin/teachers");
+      const res = await axios.get("/api/teacher");
+      console.log(res.data)
       setTeachers(res.data);
     } catch (err) {
       console.error("Error fetching teachers:", err);
@@ -43,9 +44,9 @@ const ManageTeachers = () => {
     e.preventDefault();
     try {
       if (editMode) {
-        await axios.put(`http://localhost:9999/api/admin/teachers/${selectedId}`, formData);
+        await axios.put(`/api/teacher/${selectedId}`, formData);
       } else {
-        await axios.post("http://localhost:9999/api/admin/teachers", formData);
+        await axios.post("/api/teacher", formData);
       }
       setShow(false);
       fetchTeachers();
@@ -59,10 +60,8 @@ const ManageTeachers = () => {
     setEditMode(true);
     setSelectedId(teacher._id);
     setFormData({
-      username: teacher.user_id?.username || "",
-      password: "", // password không được trả về, cần người dùng nhập lại
-      email: teacher.user_id?.email || "",
-      phone: teacher.user_id?.phone || "",
+      email: teacher.email || "",
+      phone: teacher.phone || "",
       qualification: teacher.qualification,
       experience_years: teacher.experience_years,
       hired_date: new Date(teacher.hired_date).toISOString().split("T")[0],
@@ -74,7 +73,7 @@ const ManageTeachers = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this teacher?")) {
       try {
-        await axios.delete(`http://localhost:9999/api/admin/teachers/${id}`);
+        await axios.delete(`/api/teacher/${id}`);
         fetchTeachers();
       } catch (err) {
         console.error("Error deleting teacher:", err);
@@ -120,7 +119,6 @@ const ManageTeachers = () => {
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>Username</th>
             <th>Email</th>
             <th>Phone</th>
             <th>Qualification</th>
@@ -133,9 +131,8 @@ const ManageTeachers = () => {
         <tbody>
           {filteredTeachers.map((t) => (
             <tr key={t._id}>
-              <td>{t.user_id?.username}</td>
-              <td>{t.user_id?.email}</td>
-              <td>{t.user_id?.phone}</td>
+              <td>{t.account_id.email}</td>
+              <td>{t.account_id.phone}</td>
               <td>{t.qualification}</td>
               <td>{t.experience_years} years</td>
               <td>{new Date(t.hired_date).toLocaleDateString()}</td>

@@ -19,12 +19,12 @@ const ManageFees = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const fetchFees = async () => {
-    const res = await axios.get("http://localhost:9999/api/admin/fees");
+    const res = await axios.get("/api/tuition-fee");
     setFees(res.data);
   };
 
   const fetchClasses = async () => {
-    const res = await axios.get("http://localhost:9999/api/admin/classes");
+    const res = await axios.get("/api/class");
     setClasses(res.data);
   };
 
@@ -39,14 +39,14 @@ const ManageFees = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:9999/api/admin/fees", form);
+    await axios.post("/api/tuition-fee", form);
     setShow(false);
     fetchFees();
   };
 
   const updateStatus = async (id, currentStatus) => {
     const newStatus = currentStatus === 'Paid' ? 'Unpaid' : 'Paid';
-    await axios.put(`http://localhost:9999/api/admin/fees/${id}`, {
+    await axios.put(`/api/tuition-fee/${id}`, {
       payment_status: newStatus
     });
     fetchFees();
@@ -54,7 +54,7 @@ const ManageFees = () => {
 
   const handleToggleStatus = async (id, currentStatus) => {
     try {
-      await axios.put(`http://localhost:9999/api/admin/fees/${id}`, {
+      await axios.put(`/api/tuition-fee/${id}`, {
         payment_status: currentStatus === 'Paid' ? 'Unpaid' : 'Paid'
       });
       fetchFees();
@@ -65,7 +65,7 @@ const ManageFees = () => {
 
   const deleteFee = async (id) => {
     if (!window.confirm("Are you sure you want to delete this tuition fee?")) return;
-    await axios.delete(`http://localhost:9999/api/admin/fees/${id}`);
+    await axios.delete(`/api/tuition-fee/${id}`);
     fetchFees();
   };
 
@@ -110,7 +110,7 @@ const ManageFees = () => {
           {filteredFees.map(fee => (
             <tr key={fee._id}>
               <td>{fee.class_id?.class_name || fee.class_id}</td>
-              <td>{typeof fee.monthly_fee === 'object' ? fee.monthly_fee.$numberDecimal : fee.monthly_fee}</td>
+              <td>{typeof fee.monthly_fee === 'object' ? formatVND(fee.monthly_fee.$numberDecimal) : formatVND(fee.monthly_fee)}</td>
               <td>{fee.effective_date ? new Date(fee.effective_date).toLocaleDateString() : ''}</td>
               <td>{fee.note}</td>
               <td>
