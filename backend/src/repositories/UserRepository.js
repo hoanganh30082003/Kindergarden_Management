@@ -1,18 +1,17 @@
-const UserModel = require('../model/UserModel');
+const User = require('../model/UserModel');
 
-const findByUsernameAndPassword = async (username, password) => {
+exports.createUser = (data) => {
+  return User.create(data);
+};
 
-    return await UserModel.findOne({ username, password });
-}
+exports.deleteUser = (id) => {
+  return User.findByIdAndDelete(id);
+};
 
-const updateLastLogin = async (userId) => {
-    return await UserModel.findByIdAndUpdate(
-        userId,
-        { last_login: new Date() },
-        { new: true }
-    );
-}
-module.exports = {
-    findByUsernameAndPassword,
-    updateLastLogin
+exports.updateStatus = (id, status) => {
+  return User.findByIdAndUpdate(id, { status }, { new: true });
+};
+
+exports.findByUsername = (username) => {
+  return require('../model/UserModel').findOne({ username });
 };
