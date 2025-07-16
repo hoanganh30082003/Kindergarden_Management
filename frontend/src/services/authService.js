@@ -1,5 +1,6 @@
 import axios from "axios";
-const API_URL = "/api/auth/login"; // sửa lại đúng endpoint backend
+// const API_URL = "/api/auth/login"; // sửa lại đúng endpoint backend
+const API_URL = "http://localhost:9999/api/auth/login"; // sửa lại đúng endpoint backend
 
 const login = async (email, password) => {
   const res = await axios.post(API_URL, { email, password });

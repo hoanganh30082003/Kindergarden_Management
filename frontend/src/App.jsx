@@ -11,6 +11,12 @@ import RoleRedirect from "./components/RoleRedirect";
 import TransactionHistory from "./pages/TransactionHistory";
 import ManageStudents from "./pages/ManageStudents";
 import ManageParents from "./pages/ManageParents";
+import ProfilePage from "./pages/accountant/ProfilePage";
+import PaymentRecordsPage from "./pages/accountant/PaymentRecordsPage";
+import PaymentDetailPage from "./pages/accountant/PaymentDetailPage";
+import TransactionHistoryPage from "./pages/accountant/TransactionHistoryPage";
+import TuitionReportsPage from "./pages/accountant/TuitionReportsPage";
+import MealFeeReportsPage from "./pages/accountant/MealFeeReportsPage";
 
 function App() {
   return (
@@ -94,11 +100,20 @@ function App() {
               </PrivateRoute>
             }
           />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/payment-records" element={<PaymentRecordsPage />} />
+          <Route path="/payment-detail/:id" element={<PaymentDetailPage />} />
+          <Route
+            path="/transaction-history"
+            element={<TransactionHistoryPage />}
+          />
+          <Route path="/tuition-reports" element={<TuitionReportsPage />} />
+          <Route path="/meal-fee-reports" element={<MealFeeReportsPage />} />
         </Routes>
 
       </BrowserRouter>
     </AuthProvider>
-  )
+  );
 }
 
-export default App
+export default App;

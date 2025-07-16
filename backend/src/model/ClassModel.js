@@ -18,7 +18,10 @@ const classSchema = new mongoose.Schema({
     required: true
   }
 }, {
-  timestamps: true
+  timestamps: {
+    createdAt: 'create_at',
+    updatedAt: 'update_at'
+  }
 });
 
 module.exports = mongoose.model('Class', classSchema);
