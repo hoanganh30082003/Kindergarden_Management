@@ -1,4 +1,3 @@
-
 const TeacherModel = require('../model/TeacherModel');
 
 const findByUserId = async (userId) => {
@@ -9,13 +8,8 @@ const findByAccountId = async (accountId) => {
     return await TeacherModel.findOne({ account_id: accountId });
 }
 
-const findAll = async () => {
-    return await TeacherModel.find();
-};
-
-const create = async (data) => {
-    const teacher = new TeacherModel(data);
-    return await teacher.save();
+const createTeacher = (data) => {
+    return Teacher.create(data);
 };
 
 const updateById = async (id, data) => {
@@ -30,12 +24,26 @@ const findById = async (id) => {
     return await TeacherModel.findById(id);
 };
 
+const getAllTeachers = () => {
+    return Teacher.find().populate('user_id', 'username');
+};
+
+const getTeacherById = (id) => {
+    return require('../model/TeacherModel').findById(id).populate('user_id', 'username');
+};
 module.exports = {
     findByUserId,
     findByAccountId,
-    findAll,
-    create,
+    getAllTeachers,
+    createTeacher,
     updateById,
     deleteById,
     findById,
+    getTeacherById
 };
+
+
+
+
+
+

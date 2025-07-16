@@ -16,6 +16,12 @@ import PaymentDetailPage from "./pages/accountant/PaymentDetailPage";
 import TransactionHistoryPage from "./pages/accountant/TransactionHistoryPage";
 import TuitionReportsPage from "./pages/accountant/TuitionReportsPage";
 import MealFeeReportsPage from "./pages/accountant/MealFeeReportsPage";
+import ManageTeachers from "./pages/ManageTeachers";
+import ManageFees from "./pages/ManageFees"; // 
+import ManageMealFees from "./pages/ManageMealFees";  
+import ManageClasses from "./pages/ManageClass";
+
+
 
 function App() {
   return (
@@ -104,6 +110,13 @@ function App() {
           />
           <Route path="/tuition-reports" element={<TuitionReportsPage />} />
           <Route path="/meal-fee-reports" element={<MealFeeReportsPage />} />
+          <Route path="/admin/students" element={<ManageStudents />} />
+          <Route path="/admin/parents" element={<ManageParents />} />
+          <Route path="/admin/teachers" element={<ManageTeachers />} />
+          <Route path="/admin/fees" element={<ManageFees />} /> 
+          <Route path="/admin/meal-fees" element={<ManageMealFees />} />
+          <Route path="/admin/classes" element={<ManageClasses />} />
+          <Route path="/" element={<PrivateRoute />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
