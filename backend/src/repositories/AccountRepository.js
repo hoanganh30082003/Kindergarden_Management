@@ -1,11 +1,11 @@
 const AccountModel = require('../model/AccountModel');
 
 const findByEmailAndPassword = async (email, password) => {
-try{
-    return await AccountModel.findOne({ email, password });
-}catch (error){
-    console.log(error);
-}
+    try {
+        return await AccountModel.findOne({ email, password });
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 const updateLastLogin = async (userId) => {
@@ -19,8 +19,28 @@ const updateLastLogin = async (userId) => {
 const findById = async (userId) => {
     return await AccountModel.findById(userId).select("-password");
 };
+const createUser = (data) => {
+    return AccountModel.create(data);
+};
+
+const deleteUser = (id) => {
+    return AccountModel.findByIdAndDelete(id);
+};
+
+const updateStatus = (id, status) => {
+    return AccountModel.findByIdAndUpdate(id, { status }, { new: true });
+};
+
+const findBySystemName = (stystemName) => {
+    return AccountModel.findOne({ stystemName });
+};
 module.exports = {
     findByEmailAndPassword,
     updateLastLogin,
-    findById
+    findById,
+    createUser,
+    createUser,
+    deleteUser,
+    updateStatus,
+    findBySystemName
 };
