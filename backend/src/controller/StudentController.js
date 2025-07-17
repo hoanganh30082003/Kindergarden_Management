@@ -45,10 +45,10 @@ exports.deleteStudent = async (req, res) => {
 exports.getStudentsByClass = async (req, res) => {
     try {
         const { classId } = req.params;
-        const students = await StudentRepository.findByClassId(classId); // Dòng này sẽ hoạt động sau khi có require
+        const students = await StudentRepository.findByClassId(classId); 
         res.json(students);
     } catch (err) {
-        // Trả về lỗi 500 nếu có vấn đề
+        
         res.status(500).json({ message: 'Error fetching students by class' });
     }
 };
