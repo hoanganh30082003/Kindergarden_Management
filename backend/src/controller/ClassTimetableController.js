@@ -1,5 +1,3 @@
-
-
 const ClassTimetableService = require('../service/ClassTimetableService');
 
 const getMySchedule = async (req, res) => {

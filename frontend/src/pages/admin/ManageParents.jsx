@@ -8,7 +8,6 @@ const ManageParents = () => {
   const [parents, setParents] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState({
-    username: '',
     password: '',
     email: '',
     phone: '',
@@ -52,27 +51,41 @@ const ManageParents = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.username || !formData.password || !formData.full_name) {
-      alert("Vui lòng nhập đầy đủ username, password, full name!");
+    if (!formData.email || !formData.password || !formData.full_name) {
+      alert("Vui lòng nhập đầy đủ email, password, full name!");
       return;
     }
     try {
-      await axios.post("/api/parents", {
-        username: formData.username,
-        password: formData.password,
-        email: formData.email,
-        phone: formData.phone,
-        full_name: formData.full_name,
-        date_of_birth: formData.date_of_birth,
-        gender: formData.gender,
-        address: formData.address,
-        occupation: formData.occupation,
-        relationship: formData.relationship
-      });
+      if (formData._id) {
+        // Update parent
+        await axios.put(`/api/parent/update/${formData._id}`, {
+          password: formData.password,
+          email: formData.email,
+          phone: formData.phone,
+          full_name: formData.full_name,
+          date_of_birth: formData.date_of_birth,
+          gender: formData.gender,
+          address: formData.address,
+          occupation: formData.occupation,
+          relationship: formData.relationship
+        });
+      } else {
+        // Create parent
+        await axios.post("/api/parent/create", {
+          password: formData.password,
+          email: formData.email,
+          phone: formData.phone,
+          full_name: formData.full_name,
+          date_of_birth: formData.date_of_birth,
+          gender: formData.gender,
+          address: formData.address,
+          occupation: formData.occupation,
+          relationship: formData.relationship
+        });
+      }
       setShowModal(false);
       fetchParents();
       setFormData({
-        username: '',
         password: '',
         email: '',
         phone: '',
@@ -84,19 +97,7 @@ const ManageParents = () => {
         relationship: ''
       });
     } catch (err) {
-      alert(err.response?.data?.error || "Có lỗi xảy ra khi thêm parent!");
-    }
-  };
-
-  const handleToggleStatus = async (parent) => {
-    try {
-      const newStatus = parent.user_id?.status === 'Active' ? 'Inactive' : 'Active';
-      await axios.put(`/api/parent/${parent._id}/status`, {
-        status: newStatus
-      });
-      fetchParents();
-    } catch (err) {
-      alert('Failed to update status');
+      alert(err.response?.data?.error || (formData._id ? "Có lỗi xảy ra khi cập nhật parent!" : "Có lỗi xảy ra khi thêm parent!"));
     }
   };
 
@@ -104,10 +105,10 @@ const ManageParents = () => {
     <div className="container mt-4">
       <h3>Manage Parents</h3>
       <div className="d-flex justify-content-between align-items-center mb-3">
-        <Button variant="secondary" className="d-flex align-items-center" onClick={() => navigate("/")}><ArrowLeft className="me-2"/>Back to Home</Button>
+        <Button variant="secondary" className="d-flex align-items-center" onClick={() => navigate("/")}><ArrowLeft className="me-2" />Back to Home</Button>
         <Form.Control
           type="text"
-          placeholder="Search by name or username..."
+          placeholder="Search by name or ..."
           style={{ maxWidth: 300 }}
           value={searchTerm}
           onChange={e => {
@@ -115,7 +116,7 @@ const ManageParents = () => {
             setCurrentPage(1);
           }}
         />
-        <Button variant="primary" className="d-flex align-items-center" onClick={() => setShowModal(true)}><Plus className="me-2"/>Add Parent</Button>
+        <Button variant="primary" className="d-flex align-items-center" onClick={() => setShowModal(true)}><Plus className="me-2" />Add Parent</Button>
       </div>
 
       <Table striped bordered hover>
@@ -129,7 +130,6 @@ const ManageParents = () => {
             <th>Occupation</th>
             <th>Relationship</th>
             <th>Address</th>
-            <th>Status</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -144,19 +144,6 @@ const ManageParents = () => {
               <td>{p.occupation}</td>
               <td>{p.relationship}</td>
               <td>{p.address}</td>
-              <td>
-                <span className={p.user_id?.status === 'Active' ? 'text-success fw-bold' : 'text-danger fw-bold'}>
-                  {p.user_id?.status || 'N/A'}
-                </span>
-                <Button
-                  size="sm"
-                  variant={p.user_id?.status === 'Active' ? 'warning' : 'success'}
-                  className="ms-2"
-                  onClick={() => handleToggleStatus(p)}
-                >
-                  {p.user_id?.status === 'Active' ? 'Deactivate' : 'Activate'}
-                </Button>
-              </td>
               <td>
                 <Button variant="info" size="sm" onClick={() => {
                   setFormData(p);
@@ -196,10 +183,6 @@ const ManageParents = () => {
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
-            <Form.Group className="mb-2">
-              <Form.Label>Username</Form.Label>
-              <Form.Control name="username" value={formData.username} onChange={handleChange} required />
-            </Form.Group>
             <Form.Group className="mb-2">
               <Form.Label>Password</Form.Label>
               <Form.Control name="password" type="password" value={formData.password} onChange={handleChange} required />

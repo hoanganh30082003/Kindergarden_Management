@@ -1,6 +1,5 @@
 const vnpayService = require('../service/VnPayService');
 const paymentService = require('../service/PaymentService')
-const paymentRepository = require('../repositories/PaymentRepository');
 
 const createPaymentUrl = async (req, res) => {
   try {

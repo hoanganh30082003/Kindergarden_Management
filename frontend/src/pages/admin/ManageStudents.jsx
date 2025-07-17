@@ -49,9 +49,9 @@ const ManageStudents = () => {
         data.student_photo = "https://static.vecteezy.com/system/resources/previews/006/487/917/original/man-avatar-icon-free-vector.jpg"; // ảnh mặc định
       }
       if (editingId) {
-        await axios.put(`/api/student/${editingId}`, data);
+        await axios.put(`/api/student/update/${editingId}`, data);
       } else {
-        await axios.post("/api/student", data);
+        await axios.post("/api/student/create", data);
       }
       fetchStudents();
       setShowModal(false);
@@ -90,7 +90,7 @@ const ManageStudents = () => {
   };
 
   const handleDelete = async (id) => {
-    await axios.delete(`/api/student/${id}`);
+    await axios.delete(`/api/student/delete/${id}`);
     fetchStudents();
   };
 

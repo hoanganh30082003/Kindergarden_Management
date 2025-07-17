@@ -8,5 +8,5 @@ router.post('/create', ParentController.createParent);
 router.get('/:accountId', authenticateToken, ParentController.getParentByAccountId);
 router.put('/update/:id', ParentController.updateParent);
 router.delete('/delete/:id', ParentController.deleteParent);
-
+router.put('/update/status/:id',ParentController.updateStatus)
 module.exports = router;

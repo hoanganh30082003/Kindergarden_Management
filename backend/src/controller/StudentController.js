@@ -1,10 +1,8 @@
-const Student = require('../model/StudentModel');
+const StudentService = require('../service/StudentService');
 
 exports.getAllStudents = async (req, res) => {
   try {
-    const students = await Student.find()
-      .populate('parent_id', 'full_name')
-      .populate('class_id', 'class_name');
+    const students = await StudentService.getAllStudents();
     res.json(students);
   } catch (err) {
     console.error('Get students error:', err.message);
@@ -14,8 +12,7 @@ exports.getAllStudents = async (req, res) => {
 
 exports.createStudent = async (req, res) => {
   try {
-    const student = new Student(req.body);
-    await student.save();
+    const student = await StudentService.createStudent(req.body);
     res.status(201).json(student);
   } catch (err) {
     console.error('Create student error:', err.message);
@@ -25,7 +22,7 @@ exports.createStudent = async (req, res) => {
 
 exports.updateStudent = async (req, res) => {
   try {
-    const student = await Student.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const student = await StudentService.updateStudent(req.params.id, req.body);
     res.json(student);
   } catch (err) {
     console.error('Update student error:', err.message);
@@ -35,7 +32,7 @@ exports.updateStudent = async (req, res) => {
 
 exports.deleteStudent = async (req, res) => {
   try {
-    await Student.findByIdAndDelete(req.params.id);
+    await StudentService.deleteStudent(req.params.id);
     res.json({ message: 'Student deleted' });
   } catch (err) {
     console.error('Delete student error:', err.message);
