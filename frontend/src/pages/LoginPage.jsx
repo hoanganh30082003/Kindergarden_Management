@@ -16,15 +16,19 @@ const Login = () => {
     setError("");
     try {
       const res = await authService.login(email, password);
+<<<<<<< HEAD
 <<<<<<< Updated upstream
       login(res.user);
+=======
+      login(res.account);
+>>>>>>> 5bb4e8b3bb2e0094baafb84a6803469f699a1734
       navigate("/"); // chuyển hướng về trang chủ
 =======
       login(res.account);
       navigate("/"); 
 >>>>>>> Stashed changes
     } catch (err) {
-      setError(err.response?.data?.message || "Login failed");
+      setError(err.message || "Login failed");
     }
   };
 
@@ -38,10 +42,10 @@ const Login = () => {
               {error && <Alert variant="danger">{error}</Alert>}
               <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="email">
-                  <Form.Label>Username</Form.Label>
+                  <Form.Label>Email</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Enter username"
+                    placeholder="Enter email"
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                     required

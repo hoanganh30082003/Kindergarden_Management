@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
 const teacherSchema = new mongoose.Schema({
-  user_id: {
+  account_id: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
+    ref: 'Account',
     required: true,
   },
   qualification: {

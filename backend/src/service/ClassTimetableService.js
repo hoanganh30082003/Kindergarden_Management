@@ -2,8 +2,8 @@
 
 const ClassTimetableRepository = require('../repositories/ClassTimetableRepository');
 const TeacherRepository = require('../repositories/TeacherRepository');
+const ParentRepository = require('../repositories/ParentRepository');
 const StudentRepository = require('../repositories/StudentRepository');
-
 const getScheduleForTeacher = async (userId) => {
     const teacher = await TeacherRepository.findByUserId(userId);
     if (!teacher) {
@@ -17,7 +17,6 @@ const getScheduleForParent = async (parentId) => {
     if (!students || students.length === 0) {
         return [];
     }
-
     const classIds = students.map(s => s.class_id);
     return await ClassTimetableRepository.findByClassIds(classIds);
 };

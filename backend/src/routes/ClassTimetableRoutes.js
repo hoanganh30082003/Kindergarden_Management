@@ -7,5 +7,6 @@ const authenticateToken = require('../middlewares/AuthMiddleware');
 
 
 router.get('/my-schedule', authenticateToken, ClassTimetableController.getMySchedule);
+router.get('/by-parent/:parentId', authenticateToken, ClassTimetableController.getScheduleForParent);
 
 module.exports = router;

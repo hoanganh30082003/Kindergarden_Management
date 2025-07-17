@@ -23,6 +23,13 @@ const findByTeacherId = async (teacherId) => {
     return timetables;
 };
 
+const findByClassIds = async (classIds) => {
+    return await ClassTimetableModel.find({ class_id: { $in: classIds } })
+        .populate('class_id', 'class_name')
+        .sort({ weekday: 1, start_time: 1 });
+};
+
 module.exports = {
     findByTeacherId,
+    findByClassIds,
 };

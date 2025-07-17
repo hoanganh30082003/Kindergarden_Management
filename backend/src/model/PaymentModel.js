@@ -3,12 +3,11 @@ const mongoose = require('mongoose');
 const paymentSchema = new mongoose.Schema({
   student_id: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Student',
+    ref: 'Student', 
     required: true
   },
   payment_date: {
     type: Date,
-    required: true
   },
   amount: {
     type: mongoose.Types.Decimal128,
@@ -22,12 +21,14 @@ const paymentSchema = new mongoose.Schema({
   method: {
     type: String,
     enum: ['Online', 'Offline'],
-    required: true
   },
   status: {
     type: String,
     enum: ['Paid', 'Pending', 'Failed'],
     required: true
+  },
+  note: {
+    type: String
   }
 }, {
   timestamps: true // adds createdAt and updatedAt

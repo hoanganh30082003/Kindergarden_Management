@@ -14,11 +14,11 @@ const classTimetableSchema = new mongoose.Schema({
         required: true
     },
     start_time: {
-        type: String, // stored as "HH:mm"
+        type: Date,
         required: true
     },
     end_time: {
-        type: String, // stored as "HH:mm"
+        type: Date,
         required: true
     },
     activity: {
@@ -38,8 +38,7 @@ const classTimetableSchema = new mongoose.Schema({
     timestamps: {
         createdAt: 'create_at',
         updatedAt: 'update_at'
-    },
-    collection: 'classTimeTables' // <-- THÊM DÒNG NÀY ĐỂ SỬA LỖI
+    }
 });
 
 module.exports = mongoose.model('ClassTimetable', classTimetableSchema);

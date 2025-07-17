@@ -7,8 +7,7 @@ const authenticateToken = require('../middlewares/AuthMiddleware');
 router.post('/login', authController.login);
 
 // Route bảo vệ bằng JWT
-router.get('/profile', authenticateToken, (req, res) => {
-  res.json({ message: `Hello ${req.user.username}!`, user: req.user });
-});
+router.get('/profile', authenticateToken, authController.getProfile);
+
 
 module.exports =  router;
