@@ -16,8 +16,13 @@ const Login = () => {
     setError("");
     try {
       const res = await authService.login(email, password);
+<<<<<<< Updated upstream
       login(res.user);
       navigate("/"); // chuyển hướng về trang chủ
+=======
+      login(res.account);
+      navigate("/"); 
+>>>>>>> Stashed changes
     } catch (err) {
       setError(err.response?.data?.message || "Login failed");
     }
