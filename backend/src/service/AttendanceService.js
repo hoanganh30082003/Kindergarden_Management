@@ -16,8 +16,13 @@ const recordAttendance = async (classId, date, attendanceData) => {
 const viewAttendance = async (classId, date) => {
     return await AttendanceRepository.getAttendanceByClassAndDate(classId, date);
 };
+const getAttendanceForDate = async (classId, date) => {
+    const res = await axios.get(`/api/attendance/view/${classId}/${date}`, getAuthHeaders());
+    return res.data;
+};
 
 module.exports = {
     recordAttendance,
     viewAttendance,
+    getAttendanceForDate
 };

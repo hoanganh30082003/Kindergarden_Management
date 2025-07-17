@@ -14,3 +14,6 @@ exports.createClass = (data) => {
 exports.deleteClass = (id) => {
   return Class.findByIdAndDelete(id);
 }; 
+exports.findByTeacherId = (teacherId) => {
+    return Class.find({ teacher_id: teacherId });
+};

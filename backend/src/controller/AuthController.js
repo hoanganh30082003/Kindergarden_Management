@@ -1,5 +1,4 @@
-const authService = require('../service/AuthService');
-
+    const authService = require('../service/AuthService');
 exports.login = async (req, res) => {
   const { email, password } = req.body;
 
@@ -46,3 +45,4 @@ exports.getProfile = async (req, res) => {
     });
   }
 };
+

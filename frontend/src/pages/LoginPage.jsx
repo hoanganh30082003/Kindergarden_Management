@@ -17,7 +17,7 @@ const Login = () => {
     try {
       const res = await authService.login(email, password);
       login(res.account);
-      navigate("/"); // chuyển hướng về trang chủ
+      navigate("/"); 
     } catch (err) {
       setError(err.message || "Login failed");
     }
