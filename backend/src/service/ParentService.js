@@ -1,5 +1,6 @@
 const parentRepository = require('../repositories/ParentRepository')
 const accountRepository = require('../repositories/AccountRepository')
+
 exports.getParentByAccountId = async (accountId) => {
     try {
         const result = await parentRepository.findByAccountId(accountId);

@@ -1,25 +1,19 @@
 const StudentRepository = require('../repositories/StudentRepository');
-const StudentModel = require('../model/StudentModel');
 
 exports.getAllStudents = async () => {
-  // Lấy tất cả học sinh, populate parent và class
-  return await StudentModel.find()
-    .populate('parent_id', 'full_name')
-    .populate('class_id', 'class_name');
+  return await StudentRepository.findAll();
 };
 
 exports.createStudent = async (data) => {
-  const student = new StudentModel(data);
-  await student.save();
-  return student;
+  return await StudentRepository.create(data);
 };
 
 exports.updateStudent = async (id, data) => {
-  return await StudentModel.findByIdAndUpdate(id, data, { new: true });
+  return await StudentRepository.updateById(id, data);
 };
 
 exports.deleteStudent = async (id) => {
-  return await StudentModel.findByIdAndDelete(id);
+  return await StudentRepository.deleteById(id);
 };
 
 exports.getStudentsByClass = async (classId) => {

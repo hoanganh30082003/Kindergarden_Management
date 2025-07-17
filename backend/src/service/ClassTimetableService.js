@@ -1,9 +1,7 @@
-// service/ClassTimetableService.js
-
 const ClassTimetableRepository = require('../repositories/ClassTimetableRepository');
 const TeacherRepository = require('../repositories/TeacherRepository');
-const ParentRepository = require('../repositories/ParentRepository');
 const StudentRepository = require('../repositories/StudentRepository');
+
 const getScheduleForTeacher = async (userId) => {
     const teacher = await TeacherRepository.findByUserId(userId);
     if (!teacher) {

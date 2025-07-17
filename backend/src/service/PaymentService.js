@@ -1,5 +1,5 @@
 const PaymentRepository = require('../repositories/PaymentRepository')
-const StudentModel = require('../model/StudentModel');
+const StudentRepository = require('../repositories/StudentRepository');
 
 const UpdatePaymentByVnPay = async (paymentId) =>{
     try {
@@ -8,7 +8,6 @@ const UpdatePaymentByVnPay = async (paymentId) =>{
         if (!result) {
             throw new Error(`Payment with ID ${paymentId} not found.`);
         }
-
         return result;
     } catch (error) {
         console.error('Error updating payment with VNPAY:', error);
@@ -26,15 +25,13 @@ const createPayment = async (data) => {
   };
 
 const getPaymentsByParentId = async (parentId) => {
-  const students = await StudentModel.find({ parent_id: parentId });
-  const studentIds = students.map(s => s._id);
+  const studentIds = await StudentRepository.findIdsByParentId(parentId);
   // Lấy payment theo studentIds
   return await PaymentRepository.findByStudentIds(studentIds);
 };
 
 const getPaidPaymentsByStudentId = async (parentId) =>{
-  const students = await StudentModel.find({ parent_id: parentId });
-  const studentIds = students.map(s => s._id);
+  const studentIds = await StudentRepository.findIdsByParentId(parentId);
   // Lấy payment theo studentIds
   return await PaymentRepository.getPaidPaymentsByStudentId(studentIds);
 }

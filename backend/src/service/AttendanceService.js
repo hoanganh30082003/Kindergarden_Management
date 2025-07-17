@@ -1,5 +1,3 @@
-
-
 const AttendanceRepository = require('../repositories/AttendanceRepository');
 
 const recordAttendance = async (classId, date, attendanceData) => {
