@@ -1,0 +1,216 @@
+[{
+  "_id": {
+    "$oid": "6878c51f61873470587721f7"
+  },
+  "student_id": {
+    "$oid": "6878c2c161873470587721a9"
+  },
+  "payment_date": {
+    "$date": "2025-07-17T09:40:47.722Z"
+  },
+  "amount": {
+    "$numberDecimal": "1200000"
+  },
+  "payment_type": "Tuition",
+  "method": "Offline",
+  "status": "Paid",
+  "note": "Đã thanh toán"
+},
+{
+  "_id": {
+    "$oid": "6878c51f61873470587721f8"
+  },
+  "student_id": {
+    "$oid": "6878c2c161873470587721a9"
+  },
+  "payment_date": {
+    "$date": "2025-07-17T09:40:47.722Z"
+  },
+  "amount": {
+    "$numberDecimal": "45000"
+  },
+  "payment_type": "Meal",
+  "method": "Online",
+  "status": "Paid",
+  "note": "Đã thanh toán"
+},
+{
+  "_id": {
+    "$oid": "6878c51f61873470587721f9"
+  },
+  "student_id": {
+    "$oid": "6878c2c161873470587721aa"
+  },
+  "payment_date": {
+    "$date": "2025-07-17T09:40:47.722Z"
+  },
+  "amount": {
+    "$numberDecimal": "1200000"
+  },
+  "payment_type": "Tuition",
+  "method": "Online",
+  "status": "Paid",
+  "note": "Đã thanh toán"
+},
+{
+  "_id": {
+    "$oid": "6878c51f61873470587721fa"
+  },
+  "student_id": {
+    "$oid": "6878c2c161873470587721aa"
+  },
+  "payment_date": {
+    "$date": "2025-07-17T09:40:47.722Z"
+  },
+  "amount": {
+    "$numberDecimal": "45000"
+  },
+  "payment_type": "Meal",
+  "method": "Online",
+  "status": "Paid",
+  "note": "Đã thanh toán"
+},
+{
+  "_id": {
+    "$oid": "6878c51f61873470587721fb"
+  },
+  "student_id": {
+    "$oid": "6878c2c161873470587721ab"
+  },
+  "payment_date": {
+    "$date": "2025-07-17T09:40:47.722Z"
+  },
+  "amount": {
+    "$numberDecimal": "1200000"
+  },
+  "payment_type": "Tuition",
+  "method": "Online",
+  "status": "Paid",
+  "note": "Đã thanh toán"
+},
+{
+  "_id": {
+    "$oid": "6878c51f61873470587721fc"
+  },
+  "student_id": {
+    "$oid": "6878c2c161873470587721ab"
+  },
+  "payment_date": {
+    "$date": "2025-07-17T09:40:47.722Z"
+  },
+  "amount": {
+    "$numberDecimal": "45000"
+  },
+  "payment_type": "Meal",
+  "method": "Offline",
+  "status": "Pending",
+  "note": "Chưa thanh toán"
+},
+{
+  "_id": {
+    "$oid": "6878c51f61873470587721fd"
+  },
+  "student_id": {
+    "$oid": "6878c2c161873470587721ac"
+  },
+  "payment_date": {
+    "$date": "2025-07-17T09:40:47.722Z"
+  },
+  "amount": {
+    "$numberDecimal": "1200000"
+  },
+  "payment_type": "Tuition",
+  "method": "Online",
+  "status": "Pending",
+  "note": "Chưa thanh toán"
+},
+{
+  "_id": {
+    "$oid": "6878c51f61873470587721fe"
+  },
+  "student_id": {
+    "$oid": "6878c2c161873470587721ac"
+  },
+  "payment_date": {
+    "$date": "2025-07-17T09:40:47.722Z"
+  },
+  "amount": {
+    "$numberDecimal": "45000"
+  },
+  "payment_type": "Meal",
+  "method": "Offline",
+  "status": "Pending",
+  "note": "Chưa thanh toán"
+},
+{
+  "_id": {
+    "$oid": "6878c51f61873470587721ff"
+  },
+  "student_id": {
+    "$oid": "6878c2c161873470587721ad"
+  },
+  "payment_date": {
+    "$date": "2025-07-17T09:40:47.722Z"
+  },
+  "amount": {
+    "$numberDecimal": "1200000"
+  },
+  "payment_type": "Tuition",
+  "method": "Online",
+  "status": "Pending",
+  "note": "Chưa thanh toán"
+},
+{
+  "_id": {
+    "$oid": "6878c51f6187347058772200"
+  },
+  "student_id": {
+    "$oid": "6878c2c161873470587721ad"
+  },
+  "payment_date": {
+    "$date": "2025-07-17T09:40:47.722Z"
+  },
+  "amount": {
+    "$numberDecimal": "45000"
+  },
+  "payment_type": "Meal",
+  "method": "Online",
+  "status": "Pending",
+  "note": "Chưa thanh toán"
+},
+{
+  "_id": {
+    "$oid": "6878c51f6187347058772201"
+  },
+  "student_id": {
+    "$oid": "6878c2c161873470587721ae"
+  },
+  "payment_date": {
+    "$date": "2025-07-17T09:40:47.722Z"
+  },
+  "amount": {
+    "$numberDecimal": "1200000"
+  },
+  "payment_type": "Tuition",
+  "method": "Online",
+  "status": "Pending",
+  "note": "Chưa thanh toán"
+},
+{
+  "_id": {
+    "$oid": "6878c51f6187347058772202"
+  },
+  "student_id": {
+    "$oid": "6878c2c161873470587721ae"
+  },
+  "payment_date": {
+    "$date": "2025-07-17T09:40:47.722Z"
+  },
+  "amount": {
+    "$numberDecimal": "45000"
+  },
+  "payment_type": "Meal",
+  "method": "Online",
+  "status": "Pending",
+  "note": "Chưa thanh toán"
+}]

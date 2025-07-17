@@ -1,0 +1,84 @@
+[{
+  "_id": {
+    "$oid": "6878bfd96187347058772198"
+  },
+  "account_id": {
+    "$oid": "687675cc46e7a392f6a4b2a9"
+  },
+  "qualification": "Bachelor of Education",
+  "experience_years": 5,
+  "hired_date": {
+    "$date": "2020-08-15T00:00:00.000Z"
+  },
+  "note": "Specializes in early childhood education."
+},
+{
+  "_id": {
+    "$oid": "6878bfd96187347058772199"
+  },
+  "account_id": {
+    "$oid": "68767c33da660e25c1f65873"
+  },
+  "qualification": "Master of Education",
+  "experience_years": 7,
+  "hired_date": {
+    "$date": "2018-05-10T00:00:00.000Z"
+  },
+  "note": "Head of kindergarten curriculum team."
+},
+{
+  "_id": {
+    "$oid": "6878bfd9618734705877219a"
+  },
+  "account_id": {
+    "$oid": "687816d0ba260fdf1bbe9405"
+  },
+  "qualification": "Bachelor of Arts in Teaching",
+  "experience_years": 3,
+  "hired_date": {
+    "$date": "2022-09-01T00:00:00.000Z"
+  },
+  "note": "Focuses on music and movement classes."
+},
+{
+  "_id": {
+    "$oid": "6878bfd9618734705877219b"
+  },
+  "account_id": {
+    "$oid": "6878beec51b35b13868c2c68"
+  },
+  "qualification": "Bachelor of Science in Education",
+  "experience_years": 4,
+  "hired_date": {
+    "$date": "2021-01-20T00:00:00.000Z"
+  },
+  "note": "Excellent in interactive teaching methods."
+},
+{
+  "_id": {
+    "$oid": "6878bfd9618734705877219c"
+  },
+  "account_id": {
+    "$oid": "6878beec51b35b13868c2c6b"
+  },
+  "qualification": "Diploma in Early Childhood Education",
+  "experience_years": 6,
+  "hired_date": {
+    "$date": "2019-11-12T00:00:00.000Z"
+  },
+  "note": "Leads creative arts projects."
+},
+{
+  "_id": {
+    "$oid": "6878bfd9618734705877219d"
+  },
+  "account_id": {
+    "$oid": "6878beec51b35b13868c2c6e"
+  },
+  "qualification": "Master of Child Psychology",
+  "experience_years": 10,
+  "hired_date": {
+    "$date": "2015-03-22T00:00:00.000Z"
+  },
+  "note": "Part-time counselor for special cases."
+}]

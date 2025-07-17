@@ -1,0 +1,249 @@
+[{
+  "_id": {
+    "$oid": "687675cc46e7a392f6a4b2a8"
+  },
+  "password": "admin123",
+  "role": "Admin",
+  "system_name": "System Admin",
+  "email": "admin@example.com",
+  "phone": "0901234567",
+  "status": "Active",
+  "last_login": {
+    "$date": "2025-07-16T20:26:13.279Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-16T20:26:13.280Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "687675cc46e7a392f6a4b2a9"
+  },
+  "password": "teacher456",
+  "role": "Teacher",
+  "system_name": "Ms. Linh",
+  "email": "linh.teacher@example.com",
+  "phone": "0912345678",
+  "status": "Active",
+  "last_login": {
+    "$date": "2025-07-10T10:15:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "687675cc46e7a392f6a4b2aa"
+  },
+  "password": "parent789",
+  "role": "Parent",
+  "system_name": "Mr. An",
+  "email": "an.parent@example.com",
+  "phone": "0933456789",
+  "status": "Active",
+  "last_login": {
+    "$date": "2025-07-17T09:07:35.630Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-17T09:07:35.631Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "687675cc46e7a392f6a4b2ab"
+  },
+  "password": "account998",
+  "role": "Accountant",
+  "system_name": "Ms. Thu",
+  "email": "thu.accounting@example.com",
+  "phone": "0924567890",
+  "status": "Active",
+  "last_login": {
+    "$date": "2025-07-16T20:25:17.278Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-16T20:25:17.279Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68767c33da660e25c1f65873"
+  },
+  "password": "teacher999",
+  "role": "Teacher",
+  "system_name": "Mr. Phúc",
+  "email": "phuc.teacher@example.com",
+  "phone": "0911122233",
+  "status": "Active",
+  "last_login": {
+    "$date": "2025-07-15T08:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878105670c69bdacd8f1e2b"
+  },
+  "password": "StrongPassword123!",
+  "role": "Parent",
+  "system_name": "parentA@example.com",
+  "email": "parenta@example.com",
+  "phone": "0912345678",
+  "status": "Active",
+  "last_login": null,
+  "createdAt": {
+    "$date": "2025-07-16T20:49:26.734Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-16T20:49:26.734Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687816d0ba260fdf1bbe9405"
+  },
+  "password": "Secure123@",
+  "role": "Teacher",
+  "system_name": "teacher.b@example.com",
+  "email": "teacher.b@example.com",
+  "phone": "0901234567",
+  "status": "Active",
+  "last_login": null,
+  "createdAt": {
+    "$date": "2025-07-16T21:17:04.710Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-16T21:17:04.710Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6878beec51b35b13868c2c67"
+  },
+  "password": "hashed_pw1",
+  "role": "Admin",
+  "system_name": "System Admin",
+  "email": "admin1@example.com",
+  "phone": "0123456789",
+  "status": "Active",
+  "last_login": {
+    "$date": "2025-07-17T09:14:20.095Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878beec51b35b13868c2c68"
+  },
+  "password": "hashed_pw2",
+  "role": "Teacher",
+  "system_name": "Mr. John",
+  "email": "john.teacher@example.com",
+  "phone": "0987654321",
+  "status": "Active",
+  "last_login": null
+},
+{
+  "_id": {
+    "$oid": "6878beec51b35b13868c2c69"
+  },
+  "password": "hashed_pw3",
+  "role": "Parent",
+  "system_name": "Mrs. Anna",
+  "email": "anna.parent@example.com",
+  "phone": "0911222333",
+  "status": "Inactive",
+  "last_login": {
+    "$date": "2025-07-17T09:14:20.095Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878beec51b35b13868c2c6a"
+  },
+  "password": "hashed_pw4",
+  "role": "Accountant",
+  "system_name": "Finance Dept",
+  "email": "finance@example.com",
+  "phone": "0900111222",
+  "status": "Suspended",
+  "last_login": null
+},
+{
+  "_id": {
+    "$oid": "6878beec51b35b13868c2c6b"
+  },
+  "password": "hashed_pw5",
+  "role": "Teacher",
+  "system_name": "Ms. Laura",
+  "email": "laura.teacher@example.com",
+  "phone": "0933444555",
+  "status": "Active",
+  "last_login": {
+    "$date": "2025-07-17T09:14:20.095Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878beec51b35b13868c2c6c"
+  },
+  "password": "hashed_pw6",
+  "role": "Parent",
+  "system_name": "Mr. Bob",
+  "email": "bob.parent@example.com",
+  "phone": "0922333444",
+  "status": "Active",
+  "last_login": {
+    "$date": "2025-07-17T09:14:20.095Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878beec51b35b13868c2c6d"
+  },
+  "password": "hashed_pw7",
+  "role": "Admin",
+  "system_name": "Super Admin",
+  "email": "superadmin@example.com",
+  "phone": "0966778899",
+  "status": "Active",
+  "last_login": null
+},
+{
+  "_id": {
+    "$oid": "6878beec51b35b13868c2c6e"
+  },
+  "password": "hashed_pw8",
+  "role": "Teacher",
+  "system_name": "Mr. Smith",
+  "email": "smith.teacher@example.com",
+  "phone": "0977889900",
+  "status": "Suspended",
+  "last_login": {
+    "$date": "2025-07-17T09:14:20.095Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878beec51b35b13868c2c6f"
+  },
+  "password": "hashed_pw9",
+  "role": "Parent",
+  "system_name": "Ms. Lily",
+  "email": "lily.parent@example.com",
+  "phone": "0955667788",
+  "status": "Active",
+  "last_login": null
+},
+{
+  "_id": {
+    "$oid": "6878beec51b35b13868c2c70"
+  },
+  "password": "hashed_pw10",
+  "role": "Accountant",
+  "system_name": "Budget Officer",
+  "email": "budget@example.com",
+  "phone": "0944556677",
+  "status": "Inactive",
+  "last_login": {
+    "$date": "2025-07-17T09:14:20.095Z"
+  }
+}]

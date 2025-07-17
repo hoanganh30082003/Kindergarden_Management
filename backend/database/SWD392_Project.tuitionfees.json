@@ -1,0 +1,229 @@
+[{
+  "_id": {
+    "$oid": "687818706a0474ff99f8e392"
+  },
+  "class_id": {
+    "$oid": "64f3c12345abc12345678902"
+  },
+  "monthly_fee": {
+    "$numberDecimal": "2000000"
+  },
+  "effective_date": {
+    "$date": "2024-09-01T00:00:00.000Z"
+  },
+  "note": "Học phí lớp đặc biệt",
+  "last_editor": {
+    "$oid": "687675cc46e7a392f6a4b2a8"
+  },
+  "createdAt": {
+    "$date": "2025-07-16T21:24:00.454Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-16T21:24:00.454Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "687818706a0474ff99f8e393"
+  },
+  "class_id": {
+    "$oid": "64f3c12345abc12345678903"
+  },
+  "monthly_fee": {
+    "$numberDecimal": "1500000"
+  },
+  "effective_date": {
+    "$date": "2024-10-01T00:00:00.000Z"
+  },
+  "note": "Khuyến mãi tháng 10",
+  "last_editor": {
+    "$oid": "687675cc46e7a392f6a4b2a8"
+  },
+  "createdAt": {
+    "$date": "2025-07-16T21:24:00.454Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-16T21:24:00.454Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "687818706a0474ff99f8e394"
+  },
+  "class_id": {
+    "$oid": "64f3c12345abc12345678904"
+  },
+  "monthly_fee": {
+    "$numberDecimal": "2200000"
+  },
+  "effective_date": {
+    "$date": "2024-11-01T00:00:00.000Z"
+  },
+  "note": "Học phí nâng cao",
+  "last_editor": {
+    "$oid": "687675cc46e7a392f6a4b2a8"
+  },
+  "createdAt": {
+    "$date": "2025-07-16T21:24:00.454Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-16T21:24:00.454Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "687818706a0474ff99f8e395"
+  },
+  "class_id": {
+    "$oid": "64f3c12345abc12345678905"
+  },
+  "monthly_fee": {
+    "$numberDecimal": "1700000"
+  },
+  "effective_date": {
+    "$date": "2024-09-01T00:00:00.000Z"
+  },
+  "note": "Ưu đãi cho lớp mới mở",
+  "last_editor": {
+    "$oid": "687675cc46e7a392f6a4b2a8"
+  },
+  "createdAt": {
+    "$date": "2025-07-16T21:24:00.454Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-16T21:24:00.454Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68781993454fa5e7c42755a5"
+  },
+  "class_id": {
+    "$oid": "68767d1fda660e25c1f65875"
+  },
+  "monthly_fee": {
+    "$numberDecimal": "1800000"
+  },
+  "effective_date": {
+    "$date": "2024-09-01T00:00:00.000Z"
+  },
+  "note": "Học phí tiêu chuẩn",
+  "last_editor": {
+    "$oid": "687675cc46e7a392f6a4b2a8"
+  },
+  "createdAt": {
+    "$date": "2025-07-16T21:24:00.453Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-16T21:24:00.453Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6878c45561873470587721f1"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a3"
+  },
+  "monthly_fee": {
+    "$numberDecimal": "1200000"
+  },
+  "effective_date": {
+    "$date": "2025-07-17T09:37:25.288Z"
+  },
+  "note": "Áp dụng từ tháng 7/2025",
+  "last_editor": {
+    "$oid": "687675cc46e7a392f6a4b2a8"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878c45561873470587721f2"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a4"
+  },
+  "monthly_fee": {
+    "$numberDecimal": "1200000"
+  },
+  "effective_date": {
+    "$date": "2025-07-17T09:37:25.288Z"
+  },
+  "note": "Áp dụng từ tháng 7/2025",
+  "last_editor": {
+    "$oid": "687675cc46e7a392f6a4b2a8"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878c45561873470587721f3"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a5"
+  },
+  "monthly_fee": {
+    "$numberDecimal": "1200000"
+  },
+  "effective_date": {
+    "$date": "2025-07-17T09:37:25.288Z"
+  },
+  "note": "Áp dụng từ tháng 7/2025",
+  "last_editor": {
+    "$oid": "687675cc46e7a392f6a4b2a8"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878c45561873470587721f4"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a6"
+  },
+  "monthly_fee": {
+    "$numberDecimal": "1200000"
+  },
+  "effective_date": {
+    "$date": "2025-07-17T09:37:25.288Z"
+  },
+  "note": "Áp dụng từ tháng 7/2025",
+  "last_editor": {
+    "$oid": "687675cc46e7a392f6a4b2a8"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878c45561873470587721f5"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a7"
+  },
+  "monthly_fee": {
+    "$numberDecimal": "1200000"
+  },
+  "effective_date": {
+    "$date": "2025-07-17T09:37:25.288Z"
+  },
+  "note": "Áp dụng từ tháng 7/2025",
+  "last_editor": {
+    "$oid": "687675cc46e7a392f6a4b2a8"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878c45561873470587721f6"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a8"
+  },
+  "monthly_fee": {
+    "$numberDecimal": "1200000"
+  },
+  "effective_date": {
+    "$date": "2025-07-17T09:37:25.288Z"
+  },
+  "note": "Áp dụng từ tháng 7/2025",
+  "last_editor": {
+    "$oid": "687675cc46e7a392f6a4b2a8"
+  }
+}]

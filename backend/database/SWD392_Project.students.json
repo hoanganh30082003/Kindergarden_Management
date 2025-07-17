@@ -1,0 +1,114 @@
+[{
+  "_id": {
+    "$oid": "6878c2c161873470587721a9"
+  },
+  "full_name": "Nguyễn Minh An",
+  "date_of_birth": {
+    "$date": "2020-09-05T00:00:00.000Z"
+  },
+  "gender": "Male",
+  "address": "123 Lý Thường Kiệt, Hà Nội",
+  "health_info": "No allergy, vaccinated.",
+  "student_photo": "an_photo.jpg",
+  "parent_id": {
+    "$oid": "68767b35da660e25c1f65871"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a3"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878c2c161873470587721aa"
+  },
+  "full_name": "Trần Ngọc Lan",
+  "date_of_birth": {
+    "$date": "2020-10-12T00:00:00.000Z"
+  },
+  "gender": "Female",
+  "address": "45 Lane B, District 3",
+  "health_info": "Mild asthma.",
+  "student_photo": "lan_photo.jpg",
+  "parent_id": {
+    "$oid": "6878c047618734705877219f"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a4"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878c2c161873470587721ab"
+  },
+  "full_name": "Lê Quốc Hưng",
+  "date_of_birth": {
+    "$date": "2019-07-22T00:00:00.000Z"
+  },
+  "gender": "Male",
+  "address": "78 Street C, District 2",
+  "health_info": "Allergic to peanuts.",
+  "student_photo": "hung_photo.jpg",
+  "parent_id": {
+    "$oid": "6878c04761873470587721a0"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a5"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878c2c161873470587721ac"
+  },
+  "full_name": "Phạm Thùy Dương",
+  "date_of_birth": {
+    "$date": "2021-02-15T00:00:00.000Z"
+  },
+  "gender": "Female",
+  "address": "12 Alley D, District 5",
+  "health_info": "Normal.",
+  "student_photo": "duong_photo.jpg",
+  "parent_id": {
+    "$oid": "6878c04761873470587721a1"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a6"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878c2c161873470587721ad"
+  },
+  "full_name": "Ngô Nhật Hào",
+  "date_of_birth": {
+    "$date": "2020-12-30T00:00:00.000Z"
+  },
+  "gender": "Male",
+  "address": "90 Block E, District 7",
+  "health_info": "Normal.",
+  "student_photo": "hao_photo.jpg",
+  "parent_id": {
+    "$oid": "6878c04761873470587721a2"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a7"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878c2c161873470587721ae"
+  },
+  "full_name": "Hoàng Anh Thư",
+  "date_of_birth": {
+    "$date": "2019-09-10T00:00:00.000Z"
+  },
+  "gender": "Female",
+  "address": "123 Street A, District 1",
+  "health_info": "Allergic to dust.",
+  "student_photo": "thu_photo.jpg",
+  "parent_id": {
+    "$oid": "6878c047618734705877219e"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a8"
+  }
+}]

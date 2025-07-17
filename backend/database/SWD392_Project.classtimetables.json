@@ -1,0 +1,1080 @@
+[{
+  "_id": {
+    "$oid": "6878c3b561873470587721af"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a3"
+  },
+  "weekday": "Monday",
+  "start_time": {
+    "$date": "2025-07-21T01:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-21T03:00:00.000Z"
+  },
+  "activity": "Learning Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721b0"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a3"
+  },
+  "weekday": "Monday",
+  "start_time": {
+    "$date": "2025-07-21T07:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-21T08:30:00.000Z"
+  },
+  "activity": "Physical Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721b1"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a3"
+  },
+  "weekday": "Tuesday",
+  "start_time": {
+    "$date": "2025-07-22T01:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-22T03:00:00.000Z"
+  },
+  "activity": "Learning Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721b2"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a3"
+  },
+  "weekday": "Tuesday",
+  "start_time": {
+    "$date": "2025-07-22T07:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-22T08:30:00.000Z"
+  },
+  "activity": "Physical Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721b3"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a3"
+  },
+  "weekday": "Wednesday",
+  "start_time": {
+    "$date": "2025-07-23T01:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-23T03:00:00.000Z"
+  },
+  "activity": "Learning Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721b4"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a3"
+  },
+  "weekday": "Wednesday",
+  "start_time": {
+    "$date": "2025-07-23T07:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-23T08:30:00.000Z"
+  },
+  "activity": "Physical Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721b5"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a3"
+  },
+  "weekday": "Thursday",
+  "start_time": {
+    "$date": "2025-07-24T01:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-24T03:00:00.000Z"
+  },
+  "activity": "Learning Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721b6"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a3"
+  },
+  "weekday": "Thursday",
+  "start_time": {
+    "$date": "2025-07-24T07:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-24T08:30:00.000Z"
+  },
+  "activity": "Physical Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721b7"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a3"
+  },
+  "weekday": "Friday",
+  "start_time": {
+    "$date": "2025-07-25T01:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-25T03:00:00.000Z"
+  },
+  "activity": "Learning Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721b8"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a3"
+  },
+  "weekday": "Friday",
+  "start_time": {
+    "$date": "2025-07-25T07:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-25T08:30:00.000Z"
+  },
+  "activity": "Physical Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721b9"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a4"
+  },
+  "weekday": "Monday",
+  "start_time": {
+    "$date": "2025-07-21T01:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-21T03:00:00.000Z"
+  },
+  "activity": "Learning Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721ba"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a4"
+  },
+  "weekday": "Monday",
+  "start_time": {
+    "$date": "2025-07-21T07:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-21T08:30:00.000Z"
+  },
+  "activity": "Physical Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721bb"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a4"
+  },
+  "weekday": "Tuesday",
+  "start_time": {
+    "$date": "2025-07-22T01:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-22T03:00:00.000Z"
+  },
+  "activity": "Learning Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721bc"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a4"
+  },
+  "weekday": "Tuesday",
+  "start_time": {
+    "$date": "2025-07-22T07:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-22T08:30:00.000Z"
+  },
+  "activity": "Physical Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721bd"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a4"
+  },
+  "weekday": "Wednesday",
+  "start_time": {
+    "$date": "2025-07-23T01:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-23T03:00:00.000Z"
+  },
+  "activity": "Learning Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721be"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a4"
+  },
+  "weekday": "Wednesday",
+  "start_time": {
+    "$date": "2025-07-23T07:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-23T08:30:00.000Z"
+  },
+  "activity": "Physical Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721bf"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a4"
+  },
+  "weekday": "Thursday",
+  "start_time": {
+    "$date": "2025-07-24T01:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-24T03:00:00.000Z"
+  },
+  "activity": "Learning Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721c0"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a4"
+  },
+  "weekday": "Thursday",
+  "start_time": {
+    "$date": "2025-07-24T07:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-24T08:30:00.000Z"
+  },
+  "activity": "Physical Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721c1"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a4"
+  },
+  "weekday": "Friday",
+  "start_time": {
+    "$date": "2025-07-25T01:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-25T03:00:00.000Z"
+  },
+  "activity": "Learning Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721c2"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a4"
+  },
+  "weekday": "Friday",
+  "start_time": {
+    "$date": "2025-07-25T07:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-25T08:30:00.000Z"
+  },
+  "activity": "Physical Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721c3"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a5"
+  },
+  "weekday": "Monday",
+  "start_time": {
+    "$date": "2025-07-21T01:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-21T03:00:00.000Z"
+  },
+  "activity": "Learning Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721c4"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a5"
+  },
+  "weekday": "Monday",
+  "start_time": {
+    "$date": "2025-07-21T07:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-21T08:30:00.000Z"
+  },
+  "activity": "Physical Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721c5"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a5"
+  },
+  "weekday": "Tuesday",
+  "start_time": {
+    "$date": "2025-07-22T01:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-22T03:00:00.000Z"
+  },
+  "activity": "Learning Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721c6"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a5"
+  },
+  "weekday": "Tuesday",
+  "start_time": {
+    "$date": "2025-07-22T07:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-22T08:30:00.000Z"
+  },
+  "activity": "Physical Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721c7"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a5"
+  },
+  "weekday": "Wednesday",
+  "start_time": {
+    "$date": "2025-07-23T01:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-23T03:00:00.000Z"
+  },
+  "activity": "Learning Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721c8"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a5"
+  },
+  "weekday": "Wednesday",
+  "start_time": {
+    "$date": "2025-07-23T07:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-23T08:30:00.000Z"
+  },
+  "activity": "Physical Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721c9"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a5"
+  },
+  "weekday": "Thursday",
+  "start_time": {
+    "$date": "2025-07-24T01:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-24T03:00:00.000Z"
+  },
+  "activity": "Learning Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721ca"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a5"
+  },
+  "weekday": "Thursday",
+  "start_time": {
+    "$date": "2025-07-24T07:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-24T08:30:00.000Z"
+  },
+  "activity": "Physical Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721cb"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a5"
+  },
+  "weekday": "Friday",
+  "start_time": {
+    "$date": "2025-07-25T01:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-25T03:00:00.000Z"
+  },
+  "activity": "Learning Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721cc"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a5"
+  },
+  "weekday": "Friday",
+  "start_time": {
+    "$date": "2025-07-25T07:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-25T08:30:00.000Z"
+  },
+  "activity": "Physical Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721cd"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a6"
+  },
+  "weekday": "Monday",
+  "start_time": {
+    "$date": "2025-07-21T01:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-21T03:00:00.000Z"
+  },
+  "activity": "Learning Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721ce"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a6"
+  },
+  "weekday": "Monday",
+  "start_time": {
+    "$date": "2025-07-21T07:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-21T08:30:00.000Z"
+  },
+  "activity": "Physical Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721cf"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a6"
+  },
+  "weekday": "Tuesday",
+  "start_time": {
+    "$date": "2025-07-22T01:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-22T03:00:00.000Z"
+  },
+  "activity": "Learning Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721d0"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a6"
+  },
+  "weekday": "Tuesday",
+  "start_time": {
+    "$date": "2025-07-22T07:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-22T08:30:00.000Z"
+  },
+  "activity": "Physical Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721d1"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a6"
+  },
+  "weekday": "Wednesday",
+  "start_time": {
+    "$date": "2025-07-23T01:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-23T03:00:00.000Z"
+  },
+  "activity": "Learning Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721d2"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a6"
+  },
+  "weekday": "Wednesday",
+  "start_time": {
+    "$date": "2025-07-23T07:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-23T08:30:00.000Z"
+  },
+  "activity": "Physical Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721d3"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a6"
+  },
+  "weekday": "Thursday",
+  "start_time": {
+    "$date": "2025-07-24T01:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-24T03:00:00.000Z"
+  },
+  "activity": "Learning Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721d4"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a6"
+  },
+  "weekday": "Thursday",
+  "start_time": {
+    "$date": "2025-07-24T07:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-24T08:30:00.000Z"
+  },
+  "activity": "Physical Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721d5"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a6"
+  },
+  "weekday": "Friday",
+  "start_time": {
+    "$date": "2025-07-25T01:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-25T03:00:00.000Z"
+  },
+  "activity": "Learning Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721d6"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a6"
+  },
+  "weekday": "Friday",
+  "start_time": {
+    "$date": "2025-07-25T07:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-25T08:30:00.000Z"
+  },
+  "activity": "Physical Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721d7"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a7"
+  },
+  "weekday": "Monday",
+  "start_time": {
+    "$date": "2025-07-21T01:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-21T03:00:00.000Z"
+  },
+  "activity": "Learning Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721d8"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a7"
+  },
+  "weekday": "Monday",
+  "start_time": {
+    "$date": "2025-07-21T07:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-21T08:30:00.000Z"
+  },
+  "activity": "Physical Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721d9"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a7"
+  },
+  "weekday": "Tuesday",
+  "start_time": {
+    "$date": "2025-07-22T01:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-22T03:00:00.000Z"
+  },
+  "activity": "Learning Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721da"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a7"
+  },
+  "weekday": "Tuesday",
+  "start_time": {
+    "$date": "2025-07-22T07:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-22T08:30:00.000Z"
+  },
+  "activity": "Physical Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721db"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a7"
+  },
+  "weekday": "Wednesday",
+  "start_time": {
+    "$date": "2025-07-23T01:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-23T03:00:00.000Z"
+  },
+  "activity": "Learning Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721dc"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a7"
+  },
+  "weekday": "Wednesday",
+  "start_time": {
+    "$date": "2025-07-23T07:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-23T08:30:00.000Z"
+  },
+  "activity": "Physical Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721dd"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a7"
+  },
+  "weekday": "Thursday",
+  "start_time": {
+    "$date": "2025-07-24T01:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-24T03:00:00.000Z"
+  },
+  "activity": "Learning Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721de"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a7"
+  },
+  "weekday": "Thursday",
+  "start_time": {
+    "$date": "2025-07-24T07:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-24T08:30:00.000Z"
+  },
+  "activity": "Physical Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721df"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a7"
+  },
+  "weekday": "Friday",
+  "start_time": {
+    "$date": "2025-07-25T01:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-25T03:00:00.000Z"
+  },
+  "activity": "Learning Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721e0"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a7"
+  },
+  "weekday": "Friday",
+  "start_time": {
+    "$date": "2025-07-25T07:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-25T08:30:00.000Z"
+  },
+  "activity": "Physical Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721e1"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a8"
+  },
+  "weekday": "Monday",
+  "start_time": {
+    "$date": "2025-07-21T01:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-21T03:00:00.000Z"
+  },
+  "activity": "Learning Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721e2"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a8"
+  },
+  "weekday": "Monday",
+  "start_time": {
+    "$date": "2025-07-21T07:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-21T08:30:00.000Z"
+  },
+  "activity": "Physical Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721e3"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a8"
+  },
+  "weekday": "Tuesday",
+  "start_time": {
+    "$date": "2025-07-22T01:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-22T03:00:00.000Z"
+  },
+  "activity": "Learning Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721e4"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a8"
+  },
+  "weekday": "Tuesday",
+  "start_time": {
+    "$date": "2025-07-22T07:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-22T08:30:00.000Z"
+  },
+  "activity": "Physical Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721e5"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a8"
+  },
+  "weekday": "Wednesday",
+  "start_time": {
+    "$date": "2025-07-23T01:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-23T03:00:00.000Z"
+  },
+  "activity": "Learning Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721e6"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a8"
+  },
+  "weekday": "Wednesday",
+  "start_time": {
+    "$date": "2025-07-23T07:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-23T08:30:00.000Z"
+  },
+  "activity": "Physical Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721e7"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a8"
+  },
+  "weekday": "Thursday",
+  "start_time": {
+    "$date": "2025-07-24T01:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-24T03:00:00.000Z"
+  },
+  "activity": "Learning Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721e8"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a8"
+  },
+  "weekday": "Thursday",
+  "start_time": {
+    "$date": "2025-07-24T07:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-24T08:30:00.000Z"
+  },
+  "activity": "Physical Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721e9"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a8"
+  },
+  "weekday": "Friday",
+  "start_time": {
+    "$date": "2025-07-25T01:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-25T03:00:00.000Z"
+  },
+  "activity": "Learning Activities",
+  "is_special": false,
+  "note": ""
+},
+{
+  "_id": {
+    "$oid": "6878c3b561873470587721ea"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a8"
+  },
+  "weekday": "Friday",
+  "start_time": {
+    "$date": "2025-07-25T07:00:00.000Z"
+  },
+  "end_time": {
+    "$date": "2025-07-25T08:30:00.000Z"
+  },
+  "activity": "Physical Activities",
+  "is_special": false,
+  "note": ""
+}]

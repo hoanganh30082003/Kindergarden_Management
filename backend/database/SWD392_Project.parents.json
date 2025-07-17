@@ -1,0 +1,108 @@
+[{
+  "_id": {
+    "$oid": "68767b35da660e25c1f65871"
+  },
+  "full_name": "Nguyễn Văn An",
+  "date_of_birth": {
+    "$date": "1985-08-15T00:00:00.000Z"
+  },
+  "gender": "Male",
+  "address": "123 Lý Thường Kiệt, Hà Nội",
+  "phone": "0933456789",
+  "email": "an.parent@example.com",
+  "occupation": "Kỹ sư xây dựng",
+  "relationship": "Father",
+  "account_id": {
+    "$oid": "687675cc46e7a392f6a4b2aa"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878c047618734705877219e"
+  },
+  "full_name": "Mr. An",
+  "date_of_birth": {
+    "$date": "1980-03-15T00:00:00.000Z"
+  },
+  "gender": "Male",
+  "address": "123 Street A, District 1",
+  "phone": "0933456789",
+  "email": "an.parent@example.com",
+  "occupation": "Engineer",
+  "relationship": "Father",
+  "account_id": {
+    "$oid": "687675cc46e7a392f6a4b2aa"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878c047618734705877219f"
+  },
+  "full_name": "Parent A",
+  "date_of_birth": {
+    "$date": "1985-07-22T00:00:00.000Z"
+  },
+  "gender": "Female",
+  "address": "45 Lane B, District 3",
+  "phone": "0912345678",
+  "email": "parenta@example.com",
+  "occupation": "Office Worker",
+  "relationship": "Mother",
+  "account_id": {
+    "$oid": "6878105670c69bdacd8f1e2b"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878c04761873470587721a0"
+  },
+  "full_name": "Mrs. Anna",
+  "date_of_birth": {
+    "$date": "1979-11-10T00:00:00.000Z"
+  },
+  "gender": "Female",
+  "address": "78 Street C, District 2",
+  "phone": "0911222333",
+  "email": "anna.parent@example.com",
+  "occupation": "Teacher",
+  "relationship": "Mother",
+  "account_id": {
+    "$oid": "6878beec51b35b13868c2c69"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878c04761873470587721a1"
+  },
+  "full_name": "Mr. Bob",
+  "date_of_birth": {
+    "$date": "1982-01-05T00:00:00.000Z"
+  },
+  "gender": "Male",
+  "address": "12 Alley D, District 5",
+  "phone": "0922333444",
+  "email": "bob.parent@example.com",
+  "occupation": "Sales Manager",
+  "relationship": "Father",
+  "account_id": {
+    "$oid": "6878beec51b35b13868c2c6c"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878c04761873470587721a2"
+  },
+  "full_name": "Ms. Lily",
+  "date_of_birth": {
+    "$date": "1987-09-18T00:00:00.000Z"
+  },
+  "gender": "Female",
+  "address": "90 Block E, District 7",
+  "phone": "0955667788",
+  "email": "lily.parent@example.com",
+  "occupation": "Freelancer",
+  "relationship": "Mother",
+  "account_id": {
+    "$oid": "6878beec51b35b13868c2c6f"
+  }
+}]

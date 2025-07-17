@@ -1,0 +1,144 @@
+[{
+  "_id": {
+    "$oid": "6878c43061873470587721eb"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a3"
+  },
+  "effective_date": {
+    "$date": "2025-07-17T09:36:48.529Z"
+  },
+  "breakfast_fee": {
+    "$numberDecimal": "8000"
+  },
+  "lunch_fee": {
+    "$numberDecimal": "15000"
+  },
+  "snack_fee": {
+    "$numberDecimal": "6000"
+  },
+  "note": "Áp dụng cho tháng 7",
+  "last_editor": {
+    "$oid": "687675cc46e7a392f6a4b2a8"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878c43061873470587721ec"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a4"
+  },
+  "effective_date": {
+    "$date": "2025-07-17T09:36:48.529Z"
+  },
+  "breakfast_fee": {
+    "$numberDecimal": "8000"
+  },
+  "lunch_fee": {
+    "$numberDecimal": "15000"
+  },
+  "snack_fee": {
+    "$numberDecimal": "6000"
+  },
+  "note": "Áp dụng cho tháng 7",
+  "last_editor": {
+    "$oid": "687675cc46e7a392f6a4b2a8"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878c43061873470587721ed"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a5"
+  },
+  "effective_date": {
+    "$date": "2025-07-17T09:36:48.529Z"
+  },
+  "breakfast_fee": {
+    "$numberDecimal": "8000"
+  },
+  "lunch_fee": {
+    "$numberDecimal": "15000"
+  },
+  "snack_fee": {
+    "$numberDecimal": "6000"
+  },
+  "note": "Áp dụng cho tháng 7",
+  "last_editor": {
+    "$oid": "687675cc46e7a392f6a4b2a8"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878c43061873470587721ee"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a6"
+  },
+  "effective_date": {
+    "$date": "2025-07-17T09:36:48.529Z"
+  },
+  "breakfast_fee": {
+    "$numberDecimal": "8000"
+  },
+  "lunch_fee": {
+    "$numberDecimal": "15000"
+  },
+  "snack_fee": {
+    "$numberDecimal": "6000"
+  },
+  "note": "Áp dụng cho tháng 7",
+  "last_editor": {
+    "$oid": "687675cc46e7a392f6a4b2a8"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878c43061873470587721ef"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a7"
+  },
+  "effective_date": {
+    "$date": "2025-07-17T09:36:48.529Z"
+  },
+  "breakfast_fee": {
+    "$numberDecimal": "8000"
+  },
+  "lunch_fee": {
+    "$numberDecimal": "15000"
+  },
+  "snack_fee": {
+    "$numberDecimal": "6000"
+  },
+  "note": "Áp dụng cho tháng 7",
+  "last_editor": {
+    "$oid": "687675cc46e7a392f6a4b2a8"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878c43061873470587721f0"
+  },
+  "class_id": {
+    "$oid": "6878c11461873470587721a8"
+  },
+  "effective_date": {
+    "$date": "2025-07-17T09:36:48.529Z"
+  },
+  "breakfast_fee": {
+    "$numberDecimal": "8000"
+  },
+  "lunch_fee": {
+    "$numberDecimal": "15000"
+  },
+  "snack_fee": {
+    "$numberDecimal": "6000"
+  },
+  "note": "Áp dụng cho tháng 7",
+  "last_editor": {
+    "$oid": "687675cc46e7a392f6a4b2a8"
+  }
+}]
