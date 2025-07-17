@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext } from "react";
 import { Table, Button, Modal, Form } from "react-bootstrap";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Plus, ArrowLeft, Trash } from 'react-bootstrap-icons';
-
+import { AuthContext } from "../../context/authContext";
 const ManageMealFees = () => {
   const [mealFees, setMealFees] = useState([]);
   const [classes, setClasses] = useState([]);
+  const {account} = useContext(AuthContext);
   const [show, setShow] = useState(false);
   const [form, setForm] = useState({
     class_id: "",
@@ -14,7 +15,8 @@ const ManageMealFees = () => {
     breakfast_fee: "",
     lunch_fee: "",
     snack_fee: "",
-    note: ""
+    note: "",
+    last_editor: account._id
   });
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -55,31 +57,18 @@ const ManageMealFees = () => {
         breakfast_fee: form.breakfast_fee.toString(),
         lunch_fee: form.lunch_fee.toString(),
         snack_fee: form.snack_fee.toString(),
-        payment_status: "Unpaid"
       };
-      await axios.post("/api/meal-fee", payload);
+      await axios.post("/api/meal-fee/create", payload);
       setShow(false);
       fetchMealFees();
     } catch (err) {
       console.error("Failed to add meal fee:", err.response?.data || err.message);
     }
   };
-
-  const handleToggleStatus = async (id, currentStatus) => {
-    try {
-      await axios.put(`/api/meal-fee/${id}`, {
-        payment_status: currentStatus === 'Paid' ? 'Unpaid' : 'Paid'
-      });
-      fetchMealFees();
-    } catch (err) {
-      alert('Failed to update status');
-    }
-  };
-
   const deleteMealFee = async (id) => {
     if (!window.confirm("Are you sure you want to delete this meal fee?")) return;
     try {
-      await axios.delete(`/api/meal-fee/${id}`);
+      await axios.delete(`/api/meal-fee/delete/${id}`);
       fetchMealFees();
     } catch (err) {
       console.error("Failed to delete meal fee:", err);
@@ -122,7 +111,6 @@ const ManageMealFees = () => {
             <th>Lunch Fee</th>
             <th>Snack Fee</th>
             <th>Note</th>
-            <th>Status</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -135,19 +123,6 @@ const ManageMealFees = () => {
               <td>{typeof meal.lunch_fee === 'object' ? formatCurrency(meal.lunch_fee.$numberDecimal) : meal.lunch_fee}</td>
               <td>{typeof meal.snack_fee === 'object' ? formatCurrency(meal.snack_fee.$numberDecimal) : meal.snack_fee}</td>
               <td>{meal.note}</td>
-              <td>
-                <span className={meal.payment_status === 'Paid' ? 'text-success fw-bold' : 'text-danger fw-bold'}>
-                  {meal.payment_status}
-                </span>
-                <Button
-                  size="sm"
-                  variant={meal.payment_status === 'Paid' ? 'warning' : 'success'}
-                  className="ms-2"
-                  onClick={() => handleToggleStatus(meal._id, meal.payment_status)}
-                >
-                  Mark as {meal.payment_status === 'Paid' ? 'Unpaid' : 'Paid'}
-                </Button>
-              </td>
               <td>
                 <Button variant="outline-danger" size="sm" onClick={() => deleteMealFee(meal._id)}><Trash/></Button>
               </td>

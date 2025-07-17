@@ -11,8 +11,7 @@ const ManageFees = () => {
     class_id: "",
     monthly_fee: "",
     effective_date: "",
-    note: "",
-    payment_status: "Unpaid"
+    note: ""
   });
   const [classes, setClasses] = useState([]);
   const navigate = useNavigate();
@@ -39,33 +38,14 @@ const ManageFees = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("/api/tuition-fee", form);
+    await axios.post("/api/tuition-fee/create", form);
     setShow(false);
     fetchFees();
   };
 
-  const updateStatus = async (id, currentStatus) => {
-    const newStatus = currentStatus === 'Paid' ? 'Unpaid' : 'Paid';
-    await axios.put(`/api/tuition-fee/${id}`, {
-      payment_status: newStatus
-    });
-    fetchFees();
-  };
-
-  const handleToggleStatus = async (id, currentStatus) => {
-    try {
-      await axios.put(`/api/tuition-fee/${id}`, {
-        payment_status: currentStatus === 'Paid' ? 'Unpaid' : 'Paid'
-      });
-      fetchFees();
-    } catch (err) {
-      alert('Failed to update status');
-    }
-  };
-
   const deleteFee = async (id) => {
     if (!window.confirm("Are you sure you want to delete this tuition fee?")) return;
-    await axios.delete(`/api/tuition-fee/${id}`);
+    await axios.delete(`/api/tuition-fee/delete/${id}`);
     fetchFees();
   };
 
@@ -102,7 +82,6 @@ const ManageFees = () => {
             <th>Monthly Fee</th>
             <th>Effective Date</th>
             <th>Note</th>
-            <th>Status</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -113,19 +92,6 @@ const ManageFees = () => {
               <td>{typeof fee.monthly_fee === 'object' ? formatVND(fee.monthly_fee.$numberDecimal) : formatVND(fee.monthly_fee)}</td>
               <td>{fee.effective_date ? new Date(fee.effective_date).toLocaleDateString() : ''}</td>
               <td>{fee.note}</td>
-              <td>
-                <span className={fee.payment_status === 'Paid' ? 'text-success fw-bold' : 'text-danger fw-bold'}>
-                  {fee.payment_status}
-                </span>
-                <Button
-                  size="sm"
-                  variant={fee.payment_status === 'Paid' ? 'warning' : 'success'}
-                  className="ms-2"
-                  onClick={() => handleToggleStatus(fee._id, fee.payment_status)}
-                >
-                  Mark as {fee.payment_status === 'Paid' ? 'Unpaid' : 'Paid'}
-                </Button>
-              </td>
               <td>
                 <Button variant="outline-danger" size="sm" onClick={() => deleteFee(fee._id)}><Trash/></Button>
               </td>
@@ -164,16 +130,6 @@ const ManageFees = () => {
               <Form.Label>Note</Form.Label>
               <Form.Control name="note" as="textarea" rows={2} onChange={handleChange} />
             </Form.Group>
-
-            <Form.Group controlId="payment_status" className="mb-2">
-              <Form.Label>Payment Status</Form.Label>
-              <Form.Select name="payment_status" value={form.payment_status} onChange={handleChange}>
-                <option value="Unpaid">Unpaid</option>
-                <option value="Pending">Pending</option>
-                <option value="Paid">Paid</option>
-              </Form.Select>
-            </Form.Group>
-
             <Button className="mt-3" type="submit">Submit</Button>
           </Form>
         </Modal.Body>

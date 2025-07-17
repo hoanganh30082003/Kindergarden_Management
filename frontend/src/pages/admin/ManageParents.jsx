@@ -21,6 +21,17 @@ const ManageParents = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const parentsPerPage = 10;
   const [searchTerm, setSearchTerm] = useState("");
+  const defaultForm = {
+    password: '',
+    email: '',
+    phone: '',
+    full_name: '',
+    date_of_birth: '',
+    gender: 'Male',
+    address: '',
+    occupation: '',
+    relationship: ''
+  };
 
   const filteredParents = parents.filter(p =>
     (p.full_name && p.full_name.toLowerCase().includes(searchTerm.toLowerCase())) ||
@@ -146,7 +157,7 @@ const ManageParents = () => {
               <td>{p.address}</td>
               <td>
                 <Button variant="info" size="sm" onClick={() => {
-                  setFormData(p);
+                  setFormData({ ...defaultForm, ...p });
                   setShowModal(true);
                 }}>Edit</Button>
               </td>

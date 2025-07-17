@@ -3,7 +3,7 @@ const Class = require('../model/ClassModel');
 exports.getAllClasses = () => {
   return Class.find().populate({
     path: 'teacher_id',
-    populate: { path: 'account_id', select: 'email' }
+    populate: { path: 'account_id', select: 'system_name' }
   });
 };
 

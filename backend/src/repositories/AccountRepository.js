@@ -34,6 +34,10 @@ const updateStatus = (id, status) => {
 const findByEmail = (email) => {
     return AccountModel.findOne({ email });
 };
+
+const findByIdAndUpdate = (id, data) => {
+    return AccountModel.findByIdAndUpdate(id, data, {new: true});
+};
 module.exports = {
     findByEmailAndPassword,
     updateLastLogin,
@@ -41,5 +45,6 @@ module.exports = {
     createAccount,
     deleteAccount,
     updateStatus,
-    findByEmail
+    findByEmail,
+    findByIdAndUpdate
 };

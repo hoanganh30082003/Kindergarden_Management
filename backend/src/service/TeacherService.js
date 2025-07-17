@@ -26,8 +26,27 @@ exports.createTeacher = async (data) => {
   return teacher;
 };
 
-exports.updateTeacher = (id, data) => {
-  return TeacherRepository.updateById(id, data);
+exports.updateTeacher = async (id, data) => {
+  // Update teacher fields
+  const teacher = await TeacherRepository.updateById(id, {
+    qualification: data.qualification,
+    experience_years: data.experience_years,
+    hired_date: data.hired_date,
+    note: data.note
+  });
+  // Update account fields if present
+  if (teacher && teacher.account_id) {
+    const accountUpdate = {};
+    if (data.email !== undefined) accountUpdate.email = data.email;
+    if (data.password !== undefined) accountUpdate.password = data.password;
+    if (data.phone !== undefined) accountUpdate.phone = data.phone;
+    if (data.system_name !== undefined) accountUpdate.system_name = data.system_name;
+    if (Object.keys(accountUpdate).length > 0) {
+      await AccountRepository.updateStatus(teacher.account_id, undefined); // ensure account exists
+      await AccountRepository.findByIdAndUpdate(teacher.account_id,accountUpdate);
+    }
+  }
+  return teacher;
 };
 
 exports.deleteTeacher = (id) => {

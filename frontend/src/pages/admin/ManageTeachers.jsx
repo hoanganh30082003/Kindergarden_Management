@@ -9,7 +9,7 @@ const ManageTeachers = () => {
   const [editMode, setEditMode] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
   const [formData, setFormData] = useState({
-    username: "",
+    system_name: "",
     password: "",
     email: "",
     phone: "",
@@ -44,9 +44,9 @@ const ManageTeachers = () => {
     e.preventDefault();
     try {
       if (editMode) {
-        await axios.put(`/api/teacher/${selectedId}`, formData);
+        await axios.put(`/api/teacher/update/${selectedId}`, formData);
       } else {
-        await axios.post("/api/teacher", formData);
+        await axios.post("/api/teacher/create", formData);
       }
       setShow(false);
       fetchTeachers();
@@ -58,10 +58,13 @@ const ManageTeachers = () => {
 
   const handleEdit = (teacher) => {
     setEditMode(true);
+    console.log(teacher)
     setSelectedId(teacher._id);
     setFormData({
-      email: teacher.email || "",
-      phone: teacher.phone || "",
+      system_name: teacher.account_id.system_name,
+      password: teacher.account_id.password,
+      email: teacher.account_id.email || "",
+      phone: teacher.account_id.phone || "",
       qualification: teacher.qualification,
       experience_years: teacher.experience_years,
       hired_date: new Date(teacher.hired_date).toISOString().split("T")[0],
@@ -69,11 +72,11 @@ const ManageTeachers = () => {
     });
     setShow(true);
   };
-
+console.log(formData)
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this teacher?")) {
       try {
-        await axios.delete(`/api/teacher/${id}`);
+        await axios.delete(`/api/teacher/delete/${id}`);
         fetchTeachers();
       } catch (err) {
         console.error("Error deleting teacher:", err);
@@ -82,10 +85,9 @@ const ManageTeachers = () => {
   };
 
   const filteredTeachers = teachers.filter(t =>
-    (t.user_id?.username && t.user_id.username.toLowerCase().includes(searchTerm.toLowerCase())) ||
+    (t.account_id?.username && t.account_id.username.toLowerCase().includes(searchTerm.toLowerCase())) ||
     (t.qualification && t.qualification.toLowerCase().includes(searchTerm.toLowerCase()))
   );
-
   return (
     <div className="container mt-4">
       <h3>Manage Teachers</h3>
@@ -93,7 +95,7 @@ const ManageTeachers = () => {
         <Button onClick={() => {
           setEditMode(false);
           setFormData({
-            username: "",
+            system_name:"",
             password: "",
             email: "",
             phone: "",
@@ -110,7 +112,7 @@ const ManageTeachers = () => {
       </div>
       <Form.Control
         type="text"
-        placeholder="Search by username or qualification..."
+        placeholder="Search by email or qualification..."
         style={{ maxWidth: 300 }}
         value={searchTerm}
         onChange={e => setSearchTerm(e.target.value)}
@@ -119,6 +121,7 @@ const ManageTeachers = () => {
       <Table striped bordered hover>
         <thead>
           <tr>
+            <th>System Name</th>
             <th>Email</th>
             <th>Phone</th>
             <th>Qualification</th>
@@ -131,6 +134,7 @@ const ManageTeachers = () => {
         <tbody>
           {filteredTeachers.map((t) => (
             <tr key={t._id}>
+              <td>{t.account_id.system_name}</td>
               <td>{t.account_id.email}</td>
               <td>{t.account_id.phone}</td>
               <td>{t.qualification}</td>
@@ -149,17 +153,17 @@ const ManageTeachers = () => {
       {/* Add/Edit Teacher Modal */}
       <Modal show={show} onHide={() => setShow(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>{editMode ? "Update" : "Add"} Teacher</Modal.Title>
+          <Modal.Title >{editMode ? "Update" : "Add"} Teacher</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="username">
-              <Form.Label>Username</Form.Label>
-              <Form.Control name="username" maxLength={10} required disabled={editMode} value={formData.username} onChange={handleChange} />
+            <Form.Group controlId="system_name">
+              <Form.Label>System Name</Form.Label>
+              <Form.Control name="system_name" value={formData.system_name} onChange={handleChange} />
             </Form.Group>
             <Form.Group controlId="password">
               <Form.Label>Password</Form.Label>
-              <Form.Control name="password" type="password" maxLength={10} required onChange={handleChange} />
+              <Form.Control name="password" value={formData.password} maxLength={10} required onChange={handleChange} />
             </Form.Group>
             <Form.Group controlId="email">
               <Form.Label>Email</Form.Label>
