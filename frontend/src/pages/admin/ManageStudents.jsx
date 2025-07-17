@@ -26,7 +26,7 @@ const ManageStudents = () => {
 
   const fetchStudents = async () => {
     try {
-      const res = await axios.get("/api/student");
+      const res = await axios.get("/api/admin/students");
       setStudents(res.data);
     } catch (err) {
       console.error("Fetch error:", err.message);
@@ -49,9 +49,9 @@ const ManageStudents = () => {
         data.student_photo = "https://static.vecteezy.com/system/resources/previews/006/487/917/original/man-avatar-icon-free-vector.jpg"; // ảnh mặc định
       }
       if (editingId) {
-        await axios.put(`/api/student/${editingId}`, data);
+        await axios.put(`/api/admin/students/${editingId}`, data);
       } else {
-        await axios.post("/api/student", data);
+        await axios.post("/api/admin/students", data);
       }
       fetchStudents();
       setShowModal(false);
@@ -90,7 +90,7 @@ const ManageStudents = () => {
   };
 
   const handleDelete = async (id) => {
-    await axios.delete(`/api/student/${id}`);
+    await axios.delete(`/api/admin/students/${id}`);
     fetchStudents();
   };
 

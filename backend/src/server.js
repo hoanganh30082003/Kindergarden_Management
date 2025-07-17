@@ -33,6 +33,7 @@ app.use('/api/class', classRoutes);
 app.use('/api/meal-fee', mealFeeRoutes);
 app.use('/api/tuition-fee', tuitionFeeRoutes);
 app.use('/api/student', studentRoutes);
+app.use('/api/admin/students', studentRoutes);
 app.use('/api/teacher', teacherRoutes);
 
 
