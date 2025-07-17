@@ -42,10 +42,9 @@ exports.deleteStudent = async (req, res) => {
 exports.getStudentsByClass = async (req, res) => {
     try {
         const { classId } = req.params;
-        const students = await StudentRepository.findByClassId(classId); 
+        const students = await StudentService.getStudentsByClass(classId);
         res.json(students);
     } catch (err) {
-        
         res.status(500).json({ message: 'Error fetching students by class' });
     }
 };

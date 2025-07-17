@@ -17,7 +17,6 @@ const getTimetableByParentId = async (parentId) => {
     return res.data;
 };
 
-// ++ Thêm hàm mới
 const getMySchedule = async () => {
     const res = await axios.get(`${API_URL}/my-schedule`, getAuthHeaders());
     return res.data;

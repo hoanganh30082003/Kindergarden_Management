@@ -12,8 +12,8 @@ const login = async (email, password) => {
   return { token, account };
 };
 
-const generateToken = (user) => {
-  const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, {expiresIn: process.env.JWT_EXPIRE});
+const generateToken = (account) => {
+  const token = jwt.sign({ id: account._id, role: account.role }, process.env.JWT_SECRET, {expiresIn: process.env.JWT_EXPIRE});
   return token;
 };
 

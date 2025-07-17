@@ -20,4 +20,8 @@ exports.updateStudent = async (id, data) => {
 
 exports.deleteStudent = async (id) => {
   return await StudentModel.findByIdAndDelete(id);
+};
+
+exports.getStudentsByClass = async (classId) => {
+  return await StudentRepository.findByClassId(classId);
 }; 

@@ -3,7 +3,7 @@ const ClassTimetableService = require('../service/ClassTimetableService');
 const getMySchedule = async (req, res) => {
     try {
         
-        const userId = req.user.id;
+        const userId = req.account.id;
         const schedule = await ClassTimetableService.getScheduleForTeacher(userId);
         res.status(200).json(schedule);
     } catch (error) {

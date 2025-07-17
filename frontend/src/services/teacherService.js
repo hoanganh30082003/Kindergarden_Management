@@ -29,5 +29,9 @@ const recordAttendance = async (attendanceData) => {
     return res.data;
 };
 
+const getAttendanceForDate = async(classId, date) =>{
+    const res = await axios.get(`/api/attendance/view/${classId}/${date}`, getAuthHeaders());
+    return res.data;
+}
 
-export default { getMyClasses, getStudentsByClass, recordAttendance };
+export default { getMyClasses, getStudentsByClass, recordAttendance, getAttendanceForDate };

@@ -29,7 +29,7 @@ exports.deleteClass = async (req, res) => {
 exports.getMyClasses = async (req, res) => {
     try {
         // req.user.id được lấy từ token sau khi qua middleware
-        const teacherAccountId = req.user.id; 
+        const teacherAccountId = req.account.id; 
         const classes = await ClassService.getClassesByTeacherAccountId(teacherAccountId);
         res.json(classes);
     } catch (err) {

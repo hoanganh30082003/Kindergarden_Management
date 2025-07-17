@@ -26,7 +26,6 @@ exports.deleteClass = (id) => {
 exports.getClassesByTeacherAccountId = async (accountId) => {
     const teacher = await TeacherRepository.findByAccountId(accountId);
     if (!teacher) {
-        // Trả về mảng rỗng thay vì ném lỗi để không làm sập trang
         return [];
     }
     return ClassRepository.findByTeacherId(teacher._id);
