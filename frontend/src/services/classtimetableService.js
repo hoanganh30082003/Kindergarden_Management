@@ -1,13 +1,27 @@
+// src/services/classtimetableService.js
+
 import axios from "axios";
 const API_URL = "/api/timetable";
 
-const getTimetableByParentId = async (parentId) => {
-  const token = localStorage.getItem("token");
-  const res = await axios.get(`${API_URL}/by-parent/${parentId}`, {
-    headers: { Authorization: `Bearer ${token}` },
-  });
-  console.log(res.data);
-  return res.data;
+const getAuthHeaders = () => {
+    const token = localStorage.getItem("token");
+    return {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    };
 };
 
-export default { getTimetableByParentId };
+const getTimetableByParentId = async (parentId) => {
+    const res = await axios.get(`${API_URL}/by-parent/${parentId}`, getAuthHeaders());
+    return res.data;
+};
+
+// ++ Thêm hàm mới
+const getMySchedule = async () => {
+    const res = await axios.get(`${API_URL}/my-schedule`, getAuthHeaders());
+    return res.data;
+};
+
+
+export default { getTimetableByParentId, getMySchedule };
