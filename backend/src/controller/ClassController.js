@@ -26,3 +26,13 @@ exports.deleteClass = async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 }; 
+exports.getMyClasses = async (req, res) => {
+    try {
+        // req.user.id được lấy từ token sau khi qua middleware
+        const teacherAccountId = req.user.id; 
+        const classes = await ClassService.getClassesByTeacherAccountId(teacherAccountId);
+        res.json(classes);
+    } catch (err) {
+        res.status(500).json({ error: err.message || 'Failed to fetch teacher\'s classes' });
+    }
+};
