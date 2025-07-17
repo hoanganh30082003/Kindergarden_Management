@@ -1,5 +1,5 @@
 const Student = require('../model/StudentModel');
-
+const StudentRepository = require('../repositories/StudentRepository');
 exports.getAllStudents = async (req, res) => {
   try {
     const students = await Student.find()
@@ -45,9 +45,10 @@ exports.deleteStudent = async (req, res) => {
 exports.getStudentsByClass = async (req, res) => {
     try {
         const { classId } = req.params;
-        const students = await StudentRepository.findByClassId(classId);
+        const students = await StudentRepository.findByClassId(classId); // Dòng này sẽ hoạt động sau khi có require
         res.json(students);
     } catch (err) {
+        // Trả về lỗi 500 nếu có vấn đề
         res.status(500).json({ message: 'Error fetching students by class' });
     }
 };

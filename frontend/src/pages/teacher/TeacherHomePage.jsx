@@ -76,7 +76,7 @@ const TeacherHomePage = () => {
             try {
                 setAttendanceLoading(true);
                 const studentData = await teacherService.getStudentsByClass(classId);
-                setStudents(studentData);
+                setStudents(studentData.data || studentData); 
                 // Khởi tạo trạng thái điểm danh mặc định là "Present"
                 const initialAttendance = studentData.reduce((acc, student) => {
                     acc[student._id] = 'Present';
@@ -106,9 +106,9 @@ const TeacherHomePage = () => {
         }));
 
         const payload = {
-            class_id: selectedClass,
+            classId: selectedClass,      
             date: attendanceDate,
-            records: attendanceRecords,
+            attendanceData: attendanceRecords, 
         };
 
         try {
